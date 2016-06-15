@@ -1,0 +1,29 @@
+@import "_variables";
+
+html,body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+#root,
+.app-wrapper,
+.transition-wrapper,
+.transition-group {
+    height:100%;
+    min-height:100%;
+}
+
+body {
+  color: #3f3f3f;
+}
+
+::-moz-selection {
+  background: rgb(70,113,166);
+  color: #fff;
+}
+
+::selection {
+  background: rgb(70,113,166);
+  color: #fff;
+}

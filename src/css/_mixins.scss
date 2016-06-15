@@ -1,0 +1,41 @@
+@import "_variables";
+
+$prefix:'-moz-', '-webkit-', '-o-', '-ms-', '';
+
+//********************
+// fadeIn
+//********************
+@mixin keyframe-fadeIn {
+  0%   { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@-webkit-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@-o-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@-ms-keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+@keyframes fadeIn {
+  @include keyframe-fadeIn;
+}
+
+@mixin fadeIn($duration, $delay: 0s) {
+  $keyframe-name: fadeIn;
+  $duration: $duration;
+  $delay: $delay;
+
+  @each $p in $prefix {
+    #{$p}opacity: 0;
+    #{$p}animation-name: $keyframe-name;
+    #{$p}animation-duration: $duration;
+    #{$p}animation-fill-mode: forwards;
+    #{$p}animation-delay: $delay;
+  }
+}
+

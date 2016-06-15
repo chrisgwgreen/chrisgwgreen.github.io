@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as AppActions from '../actions/app'
 
+import Polygon from './polygon'
 import Project from './project'
 import Award from './award'
 import Link from './link'
@@ -33,7 +34,6 @@ class AppClass extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
 
-
     if (this.props.portfolio.state !== nextProps.portfolio.state || this.props.portfolio.id !== nextProps.portfolio.id) {
       return true;
     }
@@ -61,15 +61,17 @@ class AppClass extends React.Component {
         break;
       default:
 
+        return (<Polygon/>);
+
     }
   }
 
   render() {
 
     return (
-      <div>
-        <h1>App</h1>
+      <div className="app-wrapper">
         {this.getContent()}
+        <Link title="Home" to=""/>
         <Link title="Award" to="award"/>
         <Link title="Award 1" to="award" lid="1"/>
         <Link title="Project" to="project"/>

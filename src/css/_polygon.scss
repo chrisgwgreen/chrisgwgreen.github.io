@@ -1,0 +1,63 @@
+@import "_variables";
+
+.polygon {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.polygon-logo {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  pointer-events: none;
+}
+
+.polygon-logo {
+  transition: opacity .7s, transform .6s;
+  transform: translateY(-50px);
+  transform: translateY(0);
+}
+
+@media (max-width: $breakpoints-tablet) {
+
+  #polygon {
+
+    .logo {
+
+      width: 250px;
+      height: 250px;
+      margin-left: -125px;
+      margin-top: -125px;
+
+    }
+
+  }
+
+}
+
+@media (max-width: $breakpoints-mobile) {
+
+  #polygon {
+
+    .logo {
+
+      width: 200px;
+      height: 200px;
+      margin-left: -100px;
+      margin-top: -100px;
+
+    }
+
+  }
+
+}
