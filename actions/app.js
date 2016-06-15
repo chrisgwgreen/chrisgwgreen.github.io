@@ -1,13 +1,12 @@
 import {SET_STATE} from '../constants/app.js';
 
-console.log(SET_STATE);
+export function setAppState(action) {
 
-export function setAppState(state) {
-
-console.log('ACTIONS', state)
+console.log('ACTIONS', action)
 
   return {
     type: SET_STATE,
-    state
+    state: action.state,
+    id: action.id
   }
 };

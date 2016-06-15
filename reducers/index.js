@@ -1,12 +1,6 @@
 import { combineReducers } from 'redux'
-import appState from './appState'
+import portfolio from './portfolio'
 
-
-
-const portfolio = combineReducers({
-  appState
+export default combineReducers({
+  portfolio
 })
-console.log(portfolio);
-
-
-export default portfolio

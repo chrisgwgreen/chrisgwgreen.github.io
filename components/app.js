@@ -4,11 +4,16 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as AppActions from '../actions/app'
 
+import Project from './project'
+import Award from './award'
+import Link from './link'
+import List from './list'
+
 class AppClass extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.getContent = this.getContent.bind(this);
   }
 
   componentDidMount() {
@@ -17,41 +22,67 @@ class AppClass extends React.Component {
       console.log(location.hash);
     };
 
-  }
-
-  shouldComponentUpdate(nextProps) {
-
-    console.log(nextProps, this.props)
-
-    return true;
-  }
-
-  handleClick() {
-    history.pushState(null,null,'#portfolio');
+    const hashTag = location.hash.substring(1).split(':');
 
     this.props.actions.setAppState({
-      appState: 'portfolio'
+      state: hashTag[0],
+      id: hashTag[1]
     });
 
   }
 
-  render() {
+  shouldComponentUpdate(nextProps, nextState) {
 
-    console.log(this.props);
+
+    if (this.props.portfolio.state !== nextProps.portfolio.state || this.props.portfolio.id !== nextProps.portfolio.id) {
+      return true;
+    }
+
+    return false;
+
+  }
+
+  getContent() {
+    switch (this.props.portfolio.state) {
+
+      case 'project':
+
+        return (<Project/>);
+
+      case 'award':
+
+        if (this.props.portfolio.id >= 0) {
+          return (<Award aId={this.props.portfolio.id} />);
+          break;
+        }
+
+        return (<List/>);
+
+        break;
+      default:
+
+    }
+  }
+
+  render() {
 
     return (
       <div>
         <h1>App</h1>
-        <button onClick={this.handleClick}>Example</button>
+        {this.getContent()}
+        <Link title="Award" to="award"/>
+        <Link title="Award 1" to="award" lid="1"/>
+        <Link title="Project" to="project"/>
       </div>
     )
+
   }
 
 }
 
 const mapStateToProps = (state) => {
   return {
-    appState: state.appState
+    portfolio: state.portfolio
   }
 }
 
