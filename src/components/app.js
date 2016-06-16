@@ -7,8 +7,8 @@ import * as AppActions from '../actions/app'
 import Polygon from './polygon'
 import Project from './project'
 import Award from './award'
-import Link from './link'
 import List from './list'
+import Navigation from './navigation'
 
 class AppClass extends React.Component {
 
@@ -70,11 +70,13 @@ class AppClass extends React.Component {
 
     return (
       <div className="app-wrapper">
-        {this.getContent()}
-        <Link title="Home" to=""/>
-        <Link title="Award" to="award"/>
-        <Link title="Award 1" to="award" lid="1"/>
-        <Link title="Project" to="project"/>
+        <main className="content">
+          {this.getContent()}
+          <Navigation />
+        </main>
+        <footer className="footer">
+          <h3>GWGreen Ltd.</h3>
+        </footer>
       </div>
     )
 

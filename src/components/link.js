@@ -1,55 +1,50 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  bindActionCreators
-} from 'redux'
-import {
-  connect
-} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import * as AppActions from '../actions/app'
 
 class LinkClass extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
 
-  handleClick() {
+    handleClick() {
 
-    let hashTag = '#' + this.props.to;
-    hashTag += (this.props.lid !== undefined) ? ':' + this.props.lid : '';
+        let hashTag = '#' + this.props.to;
+        hashTag += (this.props.lid !== undefined)
+            ? ':' + this.props.lid
+            : '';
 
-    history.pushState(null, null, hashTag);
+        history.pushState(null, null, hashTag);
 
-    this.props.actions.setAppState({
-      state: this.props.to,
-      id: this.props.lid || -1
-    });
+        this.props.actions.setAppState({
+            state: this.props.to,
+            id: this.props.lid || -1
+        });
 
-  }
+    }
 
-  render() {
-    return (
-      <button onClick={this.handleClick}>
-        {this.props.title}
-      </button>
-    )
-  }
+    render() {
+        return (
+            <button onClick={this.handleClick}>
+                {this.props.title}
+            </button>
+        )
+    }
 
 }
 
 function mapDispatchToProps(dispatch) {
 
-  return {
-    actions: bindActionCreators(AppActions, dispatch)
-  }
+    return {
+        actions: bindActionCreators(AppActions, dispatch)
+    }
 
 }
 
-const Link = connect(
-  null,
-  mapDispatchToProps
-)(LinkClass);
+const Link = connect(null, mapDispatchToProps)(LinkClass);
 
 export default Link;

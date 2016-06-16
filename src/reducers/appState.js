@@ -1,7 +1,9 @@
-import {SET_STATE} from '../constants/app.js';
+import {
+    SET_STATE
+} from '../constants/app.js';
 
 const initialState = {
-  appState: ''
+    appState: ''
 };
 
 const appState = (state = initialState, action) => {
@@ -10,7 +12,7 @@ const appState = (state = initialState, action) => {
 
         case SET_STATE:
             return Object.assign(state, {
-              appState: action.appState
+                appState: action.appState
             });
             break;
         default:

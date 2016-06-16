@@ -4,21 +4,21 @@ import runSequence from 'run-sequence';
 
 module.exports = () => {
 
-  gulp.task('watcher', (cb) => {
+    gulp.task('watcher', (cb) => {
 
-    gutil.log('-----------------------------------------------------');
-    gutil.log('Starting Watchers...');
-    gutil.log('-----------------------------------------------------');
+        gutil.log('-----------------------------------------------------');
+        gutil.log('Starting Watchers...');
+        gutil.log('-----------------------------------------------------');
 
-    runSequence(
-      [
-        'scss:watch',
-        // 'scripts:watch',
-        // 'variables:watch'
-      ],
-      cb
-    );
+        runSequence(
+            [
+                'scss:watch',
+                // 'scripts:watch',
+                // 'variables:watch'
+            ],
+            cb
+        );
 
-  });
+    });
 
 };

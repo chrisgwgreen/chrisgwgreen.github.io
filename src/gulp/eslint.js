@@ -4,17 +4,17 @@ import eslint from 'gulp-eslint';
 
 module.exports = (project) => {
 
-  gulp.task('eslint', () => {
+    gulp.task('eslint', () => {
 
-    gutil.log('----------------------------------------');
-    gutil.log('Eslint...');
-    gutil.log('----------------------------------------');
+        gutil.log('----------------------------------------');
+        gutil.log('Eslint...');
+        gutil.log('----------------------------------------');
 
-    return gulp.src(project.src.root)
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failOnError());
+        return gulp.src(project.src.root)
+            .pipe(eslint())
+            .pipe(eslint.format())
+            .pipe(eslint.failOnError());
 
-  });
+    });
 
 };

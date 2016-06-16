@@ -1,29 +1,70 @@
 @import "_variables";
-
-html,body {
-    margin:0;
-    padding:0;
-    height:100%;
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
-
 #root,
 .app-wrapper,
-.transition-wrapper,
-.transition-group {
-    height:100%;
-    min-height:100%;
+.transition-group,
+.transition-wrapper {
+    height: 100%;
+    min-height: 100%;
 }
-
 body {
-  color: #3f3f3f;
+    color: #3f3f3f;
 }
-
 ::-moz-selection {
-  background: rgb(70,113,166);
-  color: #fff;
+    background: rgb(70,113,166);
+    color: #fff;
 }
-
 ::selection {
-  background: rgb(70,113,166);
-  color: #fff;
+    background: rgb(70,113,166);
+    color: #fff;
+}
+.content {
+    position: absolute;
+    overflow: auto;
+    top: 50px;
+    bottom: 100px;
+    left: 50px;
+    right: 50px;
+    background: firebrick;
+}
+h1 {
+    color: #fff;
+}
+.footer {
+    position: absolute;
+    display: block;
+    height: 100px;
+    width: 100%;
+    bottom: 0;
+    h3 {
+        font-family: 'montserratregular';
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: normal;
+        margin-top: 40px;
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (max-width: $breakpoints-tablet) {
+    .content {
+        top: 20px;
+        bottom: 100px;
+        left: 20px;
+        right: 20px;
+    }
+}
+@media (max-width: $breakpoints-mobile) {
+    .content {
+        top: 0;
+        bottom: 100px;
+        left: 0;
+        right: 0;
+    }
 }

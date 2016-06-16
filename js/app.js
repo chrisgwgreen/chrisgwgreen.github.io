@@ -58,11 +58,11 @@
 
 	var _redux = __webpack_require__(175);
 
-	var _reducers = __webpack_require__(194);
+	var _reducers = __webpack_require__(190);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _app = __webpack_require__(197);
+	var _app = __webpack_require__(193);
 
 	var _app2 = _interopRequireDefault(_app);
 
@@ -20549,15 +20549,15 @@
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _isPlainObject = __webpack_require__(188);
+	var _isPlainObject = __webpack_require__(177);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(192);
+	var _hoistNonReactStatics = __webpack_require__(188);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(193);
+	var _invariant = __webpack_require__(189);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -21809,164 +21809,6 @@
 
 /***/ },
 /* 188 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var getPrototype = __webpack_require__(189),
-	    isHostObject = __webpack_require__(190),
-	    isObjectLike = __webpack_require__(191);
-
-	/** `Object#toString` result references. */
-	var objectTag = '[object Object]';
-
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-
-	/** Used to resolve the decompiled source of functions. */
-	var funcToString = Function.prototype.toString;
-
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-
-	/** Used to infer the `Object` constructor. */
-	var objectCtorString = funcToString.call(Object);
-
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-
-	/**
-	 * Checks if `value` is a plain object, that is, an object created by the
-	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.8.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a plain object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 * }
-	 *
-	 * _.isPlainObject(new Foo);
-	 * // => false
-	 *
-	 * _.isPlainObject([1, 2, 3]);
-	 * // => false
-	 *
-	 * _.isPlainObject({ 'x': 0, 'y': 0 });
-	 * // => true
-	 *
-	 * _.isPlainObject(Object.create(null));
-	 * // => true
-	 */
-	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
-	    return false;
-	  }
-	  var proto = getPrototype(value);
-	  if (proto === null) {
-	    return true;
-	  }
-	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
-	}
-
-	module.exports = isPlainObject;
-
-
-/***/ },
-/* 189 */
-/***/ function(module, exports) {
-
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetPrototype = Object.getPrototypeOf;
-
-	/**
-	 * Gets the `[[Prototype]]` of `value`.
-	 *
-	 * @private
-	 * @param {*} value The value to query.
-	 * @returns {null|Object} Returns the `[[Prototype]]`.
-	 */
-	function getPrototype(value) {
-	  return nativeGetPrototype(Object(value));
-	}
-
-	module.exports = getPrototype;
-
-
-/***/ },
-/* 190 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is a host object in IE < 9.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
-	}
-
-	module.exports = isHostObject;
-
-
-/***/ },
-/* 191 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is object-like. A value is object-like if it's not `null`
-	 * and has a `typeof` result of "object".
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 * @example
-	 *
-	 * _.isObjectLike({});
-	 * // => true
-	 *
-	 * _.isObjectLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObjectLike(_.noop);
-	 * // => false
-	 *
-	 * _.isObjectLike(null);
-	 * // => false
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-
-	module.exports = isObjectLike;
-
-
-/***/ },
-/* 192 */
 /***/ function(module, exports) {
 
 	/**
@@ -22014,7 +21856,7 @@
 
 
 /***/ },
-/* 193 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22072,67 +21914,67 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 194 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _redux = __webpack_require__(175);
 
-	var _portfolio = __webpack_require__(195);
+	var _portfolio = __webpack_require__(191);
 
 	var _portfolio2 = _interopRequireDefault(_portfolio);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = (0, _redux.combineReducers)({
-	  portfolio: _portfolio2.default
+	    portfolio: _portfolio2.default
 	});
 
 /***/ },
-/* 195 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	exports.default = function () {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	  var action = arguments[1];
+	    var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	    var action = arguments[1];
 
 
-	  switch (action.type) {
+	    switch (action.type) {
 
-	    case _app.SET_STATE:
+	        case _app.SET_STATE:
 
-	      return Object.assign({}, state, {
-	        state: action.state,
-	        id: action.id || -1
-	      });
+	            return Object.assign({}, state, {
+	                state: action.state,
+	                id: action.id || -1
+	            });
 
-	    default:
+	        default:
 
-	      return state;
+	            return state;
 
-	  }
+	    }
 	};
 
-	var _app = __webpack_require__(196);
+	var _app = __webpack_require__(192);
 
 	var initialState = {
-	  state: '',
-	  id: -1
+	    state: '',
+	    id: -1
 	};
 
 /***/ },
-/* 196 */
+/* 192 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22143,7 +21985,7 @@
 	var SET_STATE = exports.SET_STATE = 'SET_STATE';
 
 /***/ },
-/* 197 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22166,29 +22008,29 @@
 
 	var _reactRedux = __webpack_require__(168);
 
-	var _app = __webpack_require__(198);
+	var _app = __webpack_require__(194);
 
 	var AppActions = _interopRequireWildcard(_app);
 
-	var _polygon = __webpack_require__(199);
+	var _polygon = __webpack_require__(195);
 
 	var _polygon2 = _interopRequireDefault(_polygon);
 
-	var _project = __webpack_require__(205);
+	var _project = __webpack_require__(201);
 
 	var _project2 = _interopRequireDefault(_project);
 
-	var _award = __webpack_require__(206);
+	var _award = __webpack_require__(202);
 
 	var _award2 = _interopRequireDefault(_award);
 
-	var _link = __webpack_require__(207);
-
-	var _link2 = _interopRequireDefault(_link);
-
-	var _list = __webpack_require__(208);
+	var _list = __webpack_require__(203);
 
 	var _list2 = _interopRequireDefault(_list);
+
+	var _navigation = __webpack_require__(204);
+
+	var _navigation2 = _interopRequireDefault(_navigation);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -22269,11 +22111,21 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'app-wrapper' },
-	        this.getContent(),
-	        _react2.default.createElement(_link2.default, { title: 'Home', to: '' }),
-	        _react2.default.createElement(_link2.default, { title: 'Award', to: 'award' }),
-	        _react2.default.createElement(_link2.default, { title: 'Award 1', to: 'award', lid: '1' }),
-	        _react2.default.createElement(_link2.default, { title: 'Project', to: 'project' })
+	        _react2.default.createElement(
+	          'main',
+	          { className: 'content' },
+	          this.getContent(),
+	          _react2.default.createElement(_navigation2.default, null)
+	        ),
+	        _react2.default.createElement(
+	          'footer',
+	          { className: 'footer' },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'GWGreen Ltd.'
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -22298,37 +22150,37 @@
 	exports.default = App;
 
 /***/ },
-/* 198 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	exports.setAppState = setAppState;
 
-	var _app = __webpack_require__(196);
+	var _app = __webpack_require__(192);
 
 	function setAppState(action) {
 
-	  console.log('ACTIONS', action);
+	    console.log('ACTIONS', action);
 
-	  return {
-	    type: _app.SET_STATE,
-	    state: action.state,
-	    id: action.id
-	  };
+	    return {
+	        type: _app.SET_STATE,
+	        state: action.state,
+	        id: action.id
+	    };
 	};
 
 /***/ },
-/* 199 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22341,15 +22193,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _fss = __webpack_require__(200);
+	var _fss = __webpack_require__(196);
 
 	var _fss2 = _interopRequireDefault(_fss);
 
-	var _easing = __webpack_require__(202);
+	var _easing = __webpack_require__(198);
 
 	var _easing2 = _interopRequireDefault(_easing);
 
-	var _utils = __webpack_require__(203);
+	var _utils = __webpack_require__(199);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -22362,209 +22214,209 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Mesh = {
-	  width: 1.2,
-	  height: 1.2,
-	  sliceRatio: 0.2,
-	  ambient: '#555555',
-	  diffuse: '#FFFFFF'
+	    width: 1.2,
+	    height: 1.2,
+	    sliceRatio: 0.2,
+	    ambient: '#555555',
+	    diffuse: '#FFFFFF'
 	};
 
 	var Lights = {
-	  zOffset: 100,
-	  ambient: '#084abd',
-	  spotlights: ['#e7e698', '#e0dc82']
+	    zOffset: 100,
+	    ambient: '#084abd',
+	    spotlights: ['#e7e698', '#e0dc82']
 	};
 
 	var Polygon = function (_Component) {
-	  _inherits(Polygon, _Component);
+	    _inherits(Polygon, _Component);
 
-	  function Polygon(props, context) {
-	    _classCallCheck(this, Polygon);
+	    function Polygon(props, context) {
+	        _classCallCheck(this, Polygon);
 
-	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Polygon).call(this, props, context));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Polygon).call(this, props, context));
 
-	    _this2.animate = _this2.animate.bind(_this2);
-	    _this2.registerListeners = _this2.registerListeners.bind(_this2);
-	    return _this2;
-	  }
-
-	  _createClass(Polygon, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-
-	      var mesh = void 0;
-	      var material = void 0;
-	      var light = void 0;
-	      var i = void 0;
-
-	      _utils2.default.polyfil();
-
-	      this.output = this.refs.polygon;
-	      this.scene = new _fss2.default.Scene();
-	      this.renderer = new _fss2.default.CanvasRenderer();
-	      this.renderer.setSize(this.output.offsetWidth, this.output.offsetHeight);
-	      this.geometry = new _fss2.default.Plane(Mesh.width * this.renderer.width, Mesh.height * this.renderer.height, Math.ceil(this.renderer.width * Mesh.sliceRatio));
-
-	      //Add Lights
-	      this.spotlights = [];
-
-	      this.isTicking = false;
-
-	      for (i = 0; i < 2; i += 1) {
-
-	        this.renderer.clear();
-
-	        light = new _fss2.default.Light(Lights.ambient, Lights.spotlights[i]);
-	        light.ambientHex = light.ambient.format();
-	        light.diffuseHex = light.diffuse.format();
-	        light.setPosition(0, 0, Lights.zOffset);
-
-	        this.scene.add(light);
-
-	        this.spotlights[i] = light;
-	      }
-
-	      //Add to page...
-
-	      material = new _fss2.default.Material(Mesh.ambient, Mesh.diffuse);
-	      mesh = new _fss2.default.Mesh(this.geometry, material);
-	      this.scene.add(mesh);
-	      this.output.appendChild(this.renderer.element);
-
-	      this.renderDelaunay();
-	      this.registerListeners();
+	        _this2.animate = _this2.animate.bind(_this2);
+	        _this2.registerListeners = _this2.registerListeners.bind(_this2);
+	        return _this2;
 	    }
-	  }, {
-	    key: 'renderDelaunay',
-	    value: function renderDelaunay(callback) {
-	      var _this3 = this;
 
-	      this.renderer.render(this.scene, function () {
+	    _createClass(Polygon, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
 
-	        _this3.isTicking = false;
+	            var mesh = void 0;
+	            var material = void 0;
+	            var light = void 0;
+	            var i = void 0;
 
-	        if (typeof callback === 'function') {
-	          callback();
+	            _utils2.default.polyfil();
+
+	            this.output = this.refs.polygon;
+	            this.scene = new _fss2.default.Scene();
+	            this.renderer = new _fss2.default.CanvasRenderer();
+	            this.renderer.setSize(this.output.offsetWidth, this.output.offsetHeight);
+	            this.geometry = new _fss2.default.Plane(Mesh.width * this.renderer.width, Mesh.height * this.renderer.height, Math.ceil(this.renderer.width * Mesh.sliceRatio));
+
+	            //Add Lights
+	            this.spotlights = [];
+
+	            this.isTicking = false;
+
+	            for (i = 0; i < 2; i += 1) {
+
+	                this.renderer.clear();
+
+	                light = new _fss2.default.Light(Lights.ambient, Lights.spotlights[i]);
+	                light.ambientHex = light.ambient.format();
+	                light.diffuseHex = light.diffuse.format();
+	                light.setPosition(0, 0, Lights.zOffset);
+
+	                this.scene.add(light);
+
+	                this.spotlights[i] = light;
+	            }
+
+	            //Add to page...
+
+	            material = new _fss2.default.Material(Mesh.ambient, Mesh.diffuse);
+	            mesh = new _fss2.default.Mesh(this.geometry, material);
+	            this.scene.add(mesh);
+	            this.output.appendChild(this.renderer.element);
+
+	            this.renderDelaunay();
+	            this.registerListeners();
 	        }
-	      });
-	    }
-	  }, {
-	    key: 'registerListeners',
-	    value: function registerListeners() {
-	      var _this4 = this;
+	    }, {
+	        key: 'renderDelaunay',
+	        value: function renderDelaunay(callback) {
+	            var _this3 = this;
 
-	      var EventDispatcher = __webpack_require__(204);
+	            this.renderer.render(this.scene, function () {
 
-	      EventDispatcher.register(this, {
-	        resize: function resize(e, complete) {
+	                _this3.isTicking = false;
 
-	          _this4.renderer.setSize(_this4.output.offsetWidth, _this4.output.offsetHeight);
-	          _this4.geometry.render(Mesh.width * _this4.renderer.width, Mesh.height * _this4.renderer.height, Math.ceil(_this4.renderer.width * Mesh.sliceRatio));
-	          _fss2.default.Vector3.set(_fss2.default.Vector3.create(), _this4.renderer.halfWidth, _this4.renderer.halfHeight);
-
-	          _this4.renderDelaunay();
-
-	          if (typeof complete === 'function') {
-	            complete();
-	          }
+	                if (typeof callback === 'function') {
+	                    callback();
+	                }
+	            });
 	        }
-	      });
+	    }, {
+	        key: 'registerListeners',
+	        value: function registerListeners() {
+	            var _this4 = this;
 
-	      var _this = this;
+	            var EventDispatcher = __webpack_require__(200);
 
-	      this.mouseOut = true;
+	            EventDispatcher.register(this, {
+	                resize: function resize(e, complete) {
 
-	      this.output.addEventListener('mousemove', function (event) {
+	                    _this4.renderer.setSize(_this4.output.offsetWidth, _this4.output.offsetHeight);
+	                    _this4.geometry.render(Mesh.width * _this4.renderer.width, Mesh.height * _this4.renderer.height, Math.ceil(_this4.renderer.width * Mesh.sliceRatio));
+	                    _fss2.default.Vector3.set(_fss2.default.Vector3.create(), _this4.renderer.halfWidth, _this4.renderer.halfHeight);
 
-	        if (!_this4.isTicking) {
+	                    _this4.renderDelaunay();
 
-	          _this4.isTicking = true;
-	          _this4.mouseOut = false;
+	                    if (typeof complete === 'function') {
+	                        complete();
+	                    }
+	                }
+	            });
 
-	          window.requestAnimationFrame(function () {
+	            var _this = this;
 
-	            var x = (event.x || event.clientX) - _this.renderer.width / 2;
-	            var y = _this.renderer.height / 2 - (event.y || event.clientY);
+	            this.mouseOut = true;
 
-	            _this.spotlights[1].setPosition(x, y, 100);
+	            this.output.addEventListener('mousemove', function (event) {
 
-	            _this.renderDelaunay();
-	          }, null);
+	                if (!_this4.isTicking) {
+
+	                    _this4.isTicking = true;
+	                    _this4.mouseOut = false;
+
+	                    window.requestAnimationFrame(function () {
+
+	                        var x = (event.x || event.clientX) - _this.renderer.width / 2;
+	                        var y = _this.renderer.height / 2 - (event.y || event.clientY);
+
+	                        _this.spotlights[1].setPosition(x, y, 100);
+
+	                        _this.renderDelaunay();
+	                    }, null);
+	                }
+	            });
+
+	            this.output.addEventListener('mouseout', function (event) {
+
+	                window.requestAnimationFrame(function () {
+
+	                    var x = (event.x || event.clientX) - _this.renderer.width / 2;
+	                    var y = _this.renderer.height / 2 - (event.y || event.clientY) + window.pageYOffset;
+
+	                    _this.mouseOut = true;
+	                    _this.animate(x, 0, y, 0, window.performance.now(), 500);
+	                });
+	            });
 	        }
-	      });
+	    }, {
+	        key: 'animate',
+	        value: function animate(startX, endX, startY, endY, startTime, duration) {
+	            var _this5 = this;
 
-	      this.output.addEventListener('mouseout', function (event) {
+	            var currentTime = window.performance.now() - startTime;
+	            var easeX = _easing2.default.easeOutSine.apply(this, [1, currentTime, 0, Math.abs(startX - endX), duration]);
+	            var easeY = _easing2.default.easeOutSine.apply(this, [1, currentTime, 0, Math.abs(startY - endY), duration]);
+	            var x = void 0;
+	            var y = void 0;
 
-	        window.requestAnimationFrame(function () {
+	            if (startX < endX) {
+	                x = Math.round(startX + easeX); //Increasing...
+	            } else {
+	                    x = Math.round(startX - easeX); //Decreasing...
+	                }
 
-	          var x = (event.x || event.clientX) - _this.renderer.width / 2;
-	          var y = _this.renderer.height / 2 - (event.y || event.clientY) + window.pageYOffset;
+	            if (startY < endY) {
+	                y = Math.round(startY + easeY); //Increasing...
+	            } else {
+	                    y = Math.round(startY - easeY); //Decreasing...
+	                }
 
-	          _this.mouseOut = true;
-	          _this.animate(x, 0, y, 0, window.performance.now(), 500);
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'animate',
-	    value: function animate(startX, endX, startY, endY, startTime, duration) {
-	      var _this5 = this;
+	            this.spotlights[1].setPosition(x, y, 100);
 
-	      var currentTime = window.performance.now() - startTime;
-	      var easeX = _easing2.default.easeOutSine.apply(this, [1, currentTime, 0, Math.abs(startX - endX), duration]);
-	      var easeY = _easing2.default.easeOutSine.apply(this, [1, currentTime, 0, Math.abs(startY - endY), duration]);
-	      var x = void 0;
-	      var y = void 0;
-
-	      if (startX < endX) {
-	        x = Math.round(startX + easeX); //Increasing...
-	      } else {
-	          x = Math.round(startX - easeX); //Decreasing...
+	            this.renderDelaunay(function () {
+	                if (currentTime <= duration && _this5.mouseOut) {
+	                    requestAnimationFrame(function () {
+	                        _this5.animate(startX, endX, startY, endY, startTime, duration);
+	                    });
+	                }
+	            });
 	        }
-
-	      if (startY < endY) {
-	        y = Math.round(startY + easeY); //Increasing...
-	      } else {
-	          y = Math.round(startY - easeY); //Decreasing...
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { ref: 'polygon', className: 'polygon' },
+	                _react2.default.createElement('img', { className: 'polygon-logo', src: './img/gwg.svg', ref: 'logo' })
+	            );
 	        }
+	    }]);
 
-	      this.spotlights[1].setPosition(x, y, 100);
-
-	      this.renderDelaunay(function () {
-	        if (currentTime <= duration && _this5.mouseOut) {
-	          requestAnimationFrame(function () {
-	            _this5.animate(startX, endX, startY, endY, startTime, duration);
-	          });
-	        }
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { ref: 'polygon', className: 'polygon' },
-	        _react2.default.createElement('img', { className: 'polygon-logo', src: './img/gwg.svg', ref: 'logo' })
-	      );
-	    }
-	  }]);
-
-	  return Polygon;
+	    return Polygon;
 	}(_react.Component);
 
 	exports.default = Polygon;
 
 /***/ },
-/* 200 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
-	var _delaunay = __webpack_require__(201);
+	var _delaunay = __webpack_require__(197);
 
 	var _delaunay2 = _interopRequireDefault(_delaunay);
 
@@ -22575,9 +22427,9 @@
 	 * @author Matthew Wagerfield
 	 */
 	var FSS = {
-	  FRONT: 0,
-	  BACK: 1,
-	  DOUBLE: 2
+	    FRONT: 0,
+	    BACK: 1,
+	    DOUBLE: 2
 	};
 
 	/**
@@ -22591,9 +22443,9 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Utils = {
-	  isNumber: function isNumber(value) {
-	    return !isNaN(parseFloat(value)) && isFinite(value);
-	  }
+	    isNumber: function isNumber(value) {
+	        return !isNaN(parseFloat(value)) && isFinite(value);
+	    }
 	};
 
 	/**
@@ -22601,205 +22453,205 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Vector3 = {
-	  create: function create(x, y, z) {
-	    var vector = new FSS.Array(3);
-	    this.set(vector, x, y, z);
-	    return vector;
-	  },
-	  clone: function clone(a) {
-	    var vector = this.create();
-	    this.copy(vector, a);
-	    return vector;
-	  },
-	  set: function set(target, x, y, z) {
-	    target[0] = x || 0;
-	    target[1] = y || 0;
-	    target[2] = z || 0;
-	    return this;
-	  },
-	  setX: function setX(target, x) {
-	    target[0] = x || 0;
-	    return this;
-	  },
-	  setY: function setY(target, y) {
-	    target[1] = y || 0;
-	    return this;
-	  },
-	  setZ: function setZ(target, z) {
-	    target[2] = z || 0;
-	    return this;
-	  },
-	  copy: function copy(target, a) {
-	    target[0] = a[0];
-	    target[1] = a[1];
-	    target[2] = a[2];
-	    return this;
-	  },
-	  add: function add(target, a) {
-	    target[0] += a[0];
-	    target[1] += a[1];
-	    target[2] += a[2];
-	    return this;
-	  },
-	  addVectors: function addVectors(target, a, b) {
-	    target[0] = a[0] + b[0];
-	    target[1] = a[1] + b[1];
-	    target[2] = a[2] + b[2];
-	    return this;
-	  },
-	  addScalar: function addScalar(target, s) {
-	    target[0] += s;
-	    target[1] += s;
-	    target[2] += s;
-	    return this;
-	  },
-	  subtract: function subtract(target, a) {
-	    target[0] -= a[0];
-	    target[1] -= a[1];
-	    target[2] -= a[2];
-	    return this;
-	  },
-	  subtractVectors: function subtractVectors(target, a, b) {
-	    target[0] = a[0] - b[0];
-	    target[1] = a[1] - b[1];
-	    target[2] = a[2] - b[2];
-	    return this;
-	  },
-	  subtractScalar: function subtractScalar(target, s) {
-	    target[0] -= s;
-	    target[1] -= s;
-	    target[2] -= s;
-	    return this;
-	  },
-	  multiply: function multiply(target, a) {
-	    target[0] *= a[0];
-	    target[1] *= a[1];
-	    target[2] *= a[2];
-	    return this;
-	  },
-	  multiplyVectors: function multiplyVectors(target, a, b) {
-	    target[0] = a[0] * b[0];
-	    target[1] = a[1] * b[1];
-	    target[2] = a[2] * b[2];
-	    return this;
-	  },
-	  multiplyScalar: function multiplyScalar(target, s) {
-	    target[0] *= s;
-	    target[1] *= s;
-	    target[2] *= s;
-	    return this;
-	  },
-	  divide: function divide(target, a) {
-	    target[0] /= a[0];
-	    target[1] /= a[1];
-	    target[2] /= a[2];
-	    return this;
-	  },
-	  divideVectors: function divideVectors(target, a, b) {
-	    target[0] = a[0] / b[0];
-	    target[1] = a[1] / b[1];
-	    target[2] = a[2] / b[2];
-	    return this;
-	  },
-	  divideScalar: function divideScalar(target, s) {
-	    if (s !== 0) {
-	      target[0] /= s;
-	      target[1] /= s;
-	      target[2] /= s;
-	    } else {
-	      target[0] = 0;
-	      target[1] = 0;
-	      target[2] = 0;
-	    }
-	    return this;
-	  },
-	  cross: function cross(target, a) {
-	    var x = target[0],
-	        y = target[1],
-	        z = target[2];
+	    create: function create(x, y, z) {
+	        var vector = new FSS.Array(3);
+	        this.set(vector, x, y, z);
+	        return vector;
+	    },
+	    clone: function clone(a) {
+	        var vector = this.create();
+	        this.copy(vector, a);
+	        return vector;
+	    },
+	    set: function set(target, x, y, z) {
+	        target[0] = x || 0;
+	        target[1] = y || 0;
+	        target[2] = z || 0;
+	        return this;
+	    },
+	    setX: function setX(target, x) {
+	        target[0] = x || 0;
+	        return this;
+	    },
+	    setY: function setY(target, y) {
+	        target[1] = y || 0;
+	        return this;
+	    },
+	    setZ: function setZ(target, z) {
+	        target[2] = z || 0;
+	        return this;
+	    },
+	    copy: function copy(target, a) {
+	        target[0] = a[0];
+	        target[1] = a[1];
+	        target[2] = a[2];
+	        return this;
+	    },
+	    add: function add(target, a) {
+	        target[0] += a[0];
+	        target[1] += a[1];
+	        target[2] += a[2];
+	        return this;
+	    },
+	    addVectors: function addVectors(target, a, b) {
+	        target[0] = a[0] + b[0];
+	        target[1] = a[1] + b[1];
+	        target[2] = a[2] + b[2];
+	        return this;
+	    },
+	    addScalar: function addScalar(target, s) {
+	        target[0] += s;
+	        target[1] += s;
+	        target[2] += s;
+	        return this;
+	    },
+	    subtract: function subtract(target, a) {
+	        target[0] -= a[0];
+	        target[1] -= a[1];
+	        target[2] -= a[2];
+	        return this;
+	    },
+	    subtractVectors: function subtractVectors(target, a, b) {
+	        target[0] = a[0] - b[0];
+	        target[1] = a[1] - b[1];
+	        target[2] = a[2] - b[2];
+	        return this;
+	    },
+	    subtractScalar: function subtractScalar(target, s) {
+	        target[0] -= s;
+	        target[1] -= s;
+	        target[2] -= s;
+	        return this;
+	    },
+	    multiply: function multiply(target, a) {
+	        target[0] *= a[0];
+	        target[1] *= a[1];
+	        target[2] *= a[2];
+	        return this;
+	    },
+	    multiplyVectors: function multiplyVectors(target, a, b) {
+	        target[0] = a[0] * b[0];
+	        target[1] = a[1] * b[1];
+	        target[2] = a[2] * b[2];
+	        return this;
+	    },
+	    multiplyScalar: function multiplyScalar(target, s) {
+	        target[0] *= s;
+	        target[1] *= s;
+	        target[2] *= s;
+	        return this;
+	    },
+	    divide: function divide(target, a) {
+	        target[0] /= a[0];
+	        target[1] /= a[1];
+	        target[2] /= a[2];
+	        return this;
+	    },
+	    divideVectors: function divideVectors(target, a, b) {
+	        target[0] = a[0] / b[0];
+	        target[1] = a[1] / b[1];
+	        target[2] = a[2] / b[2];
+	        return this;
+	    },
+	    divideScalar: function divideScalar(target, s) {
+	        if (s !== 0) {
+	            target[0] /= s;
+	            target[1] /= s;
+	            target[2] /= s;
+	        } else {
+	            target[0] = 0;
+	            target[1] = 0;
+	            target[2] = 0;
+	        }
+	        return this;
+	    },
+	    cross: function cross(target, a) {
+	        var x = target[0],
+	            y = target[1],
+	            z = target[2];
 
-	    target[0] = y * a[2] - z * a[1];
-	    target[1] = z * a[0] - x * a[2];
-	    target[2] = x * a[1] - y * a[0];
+	        target[0] = y * a[2] - z * a[1];
+	        target[1] = z * a[0] - x * a[2];
+	        target[2] = x * a[1] - y * a[0];
 
-	    return this;
-	  },
-	  crossVectors: function crossVectors(target, a, b) {
-	    target[0] = a[1] * b[2] - a[2] * b[1];
-	    target[1] = a[2] * b[0] - a[0] * b[2];
-	    target[2] = a[0] * b[1] - a[1] * b[0];
-	    return this;
-	  },
-	  min: function min(target, value) {
-	    if (target[0] < value) {
-	      target[0] = value;
-	    }
-	    if (target[1] < value) {
-	      target[1] = value;
-	    }
-	    if (target[2] < value) {
-	      target[2] = value;
-	    }
-	    return this;
-	  },
-	  max: function max(target, value) {
-	    if (target[0] > value) {
-	      target[0] = value;
-	    }
-	    if (target[1] > value) {
-	      target[1] = value;
-	    }
-	    if (target[2] > value) {
-	      target[2] = value;
-	    }
-	    return this;
-	  },
-	  clamp: function clamp(target, min, max) {
-	    this.min(target, min);
-	    this.max(target, max);
-	    return this;
-	  },
-	  limit: function limit(target, min, max) {
-	    var length = this.length(target);
-	    if (min !== null && length < min) {
-	      this.setLength(target, min);
-	    } else if (max !== null && length > max) {
-	      this.setLength(target, max);
-	    }
-	    return this;
-	  },
-	  dot: function dot(a, b) {
-	    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-	  },
-	  normalise: function normalise(target) {
-	    return this.divideScalar(target, this.length(target));
-	  },
-	  negate: function negate(target) {
-	    return this.multiplyScalar(target, -1);
-	  },
-	  distanceSquared: function distanceSquared(a, b) {
-	    var dx = a[0] - b[0],
-	        dy = a[1] - b[1],
-	        dz = a[2] - b[2];
+	        return this;
+	    },
+	    crossVectors: function crossVectors(target, a, b) {
+	        target[0] = a[1] * b[2] - a[2] * b[1];
+	        target[1] = a[2] * b[0] - a[0] * b[2];
+	        target[2] = a[0] * b[1] - a[1] * b[0];
+	        return this;
+	    },
+	    min: function min(target, value) {
+	        if (target[0] < value) {
+	            target[0] = value;
+	        }
+	        if (target[1] < value) {
+	            target[1] = value;
+	        }
+	        if (target[2] < value) {
+	            target[2] = value;
+	        }
+	        return this;
+	    },
+	    max: function max(target, value) {
+	        if (target[0] > value) {
+	            target[0] = value;
+	        }
+	        if (target[1] > value) {
+	            target[1] = value;
+	        }
+	        if (target[2] > value) {
+	            target[2] = value;
+	        }
+	        return this;
+	    },
+	    clamp: function clamp(target, min, max) {
+	        this.min(target, min);
+	        this.max(target, max);
+	        return this;
+	    },
+	    limit: function limit(target, min, max) {
+	        var length = this.length(target);
+	        if (min !== null && length < min) {
+	            this.setLength(target, min);
+	        } else if (max !== null && length > max) {
+	            this.setLength(target, max);
+	        }
+	        return this;
+	    },
+	    dot: function dot(a, b) {
+	        return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+	    },
+	    normalise: function normalise(target) {
+	        return this.divideScalar(target, this.length(target));
+	    },
+	    negate: function negate(target) {
+	        return this.multiplyScalar(target, -1);
+	    },
+	    distanceSquared: function distanceSquared(a, b) {
+	        var dx = a[0] - b[0],
+	            dy = a[1] - b[1],
+	            dz = a[2] - b[2];
 
-	    return dx * dx + dy * dy + dz * dz;
-	  },
-	  distance: function distance(a, b) {
-	    return Math.sqrt(this.distanceSquared(a, b));
-	  },
-	  lengthSquared: function lengthSquared(a) {
-	    return a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
-	  },
-	  length: function length(a) {
-	    return Math.sqrt(this.lengthSquared(a));
-	  },
-	  setLength: function setLength(target, l) {
-	    var length = this.length(target);
-	    if (length !== 0 && l !== length) {
-	      this.multiplyScalar(target, l / length);
+	        return dx * dx + dy * dy + dz * dz;
+	    },
+	    distance: function distance(a, b) {
+	        return Math.sqrt(this.distanceSquared(a, b));
+	    },
+	    lengthSquared: function lengthSquared(a) {
+	        return a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
+	    },
+	    length: function length(a) {
+	        return Math.sqrt(this.lengthSquared(a));
+	    },
+	    setLength: function setLength(target, l) {
+	        var length = this.length(target);
+	        if (length !== 0 && l !== length) {
+	            this.multiplyScalar(target, l / length);
+	        }
+	        return this;
 	    }
-	    return this;
-	  }
 	};
 
 	/**
@@ -22807,90 +22659,90 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Vector4 = {
-	  create: function create(x, y, z) {
-	    var vector = new FSS.Array(4);
-	    this.set(vector, x, y, z);
-	    return vector;
-	  },
-	  set: function set(target, x, y, z, w) {
-	    target[0] = x || 0;
-	    target[1] = y || 0;
-	    target[2] = z || 0;
-	    target[3] = w || 0;
-	    return this;
-	  },
-	  setX: function setX(target, x) {
-	    target[0] = x || 0;
-	    return this;
-	  },
-	  setY: function setY(target, y) {
-	    target[1] = y || 0;
-	    return this;
-	  },
-	  setZ: function setZ(target, z) {
-	    target[2] = z || 0;
-	    return this;
-	  },
-	  setW: function setW(target, w) {
-	    target[3] = w || 0;
-	    return this;
-	  },
-	  add: function add(target, a) {
-	    target[0] += a[0];
-	    target[1] += a[1];
-	    target[2] += a[2];
-	    target[3] += a[3];
-	    return this;
-	  },
-	  multiplyVectors: function multiplyVectors(target, a, b) {
-	    target[0] = a[0] * b[0];
-	    target[1] = a[1] * b[1];
-	    target[2] = a[2] * b[2];
-	    target[3] = a[3] * b[3];
-	    return this;
-	  },
-	  multiplyScalar: function multiplyScalar(target, s) {
-	    target[0] *= s;
-	    target[1] *= s;
-	    target[2] *= s;
-	    target[3] *= s;
-	    return this;
-	  },
-	  min: function min(target, value) {
-	    if (target[0] < value) {
-	      target[0] = value;
+	    create: function create(x, y, z) {
+	        var vector = new FSS.Array(4);
+	        this.set(vector, x, y, z);
+	        return vector;
+	    },
+	    set: function set(target, x, y, z, w) {
+	        target[0] = x || 0;
+	        target[1] = y || 0;
+	        target[2] = z || 0;
+	        target[3] = w || 0;
+	        return this;
+	    },
+	    setX: function setX(target, x) {
+	        target[0] = x || 0;
+	        return this;
+	    },
+	    setY: function setY(target, y) {
+	        target[1] = y || 0;
+	        return this;
+	    },
+	    setZ: function setZ(target, z) {
+	        target[2] = z || 0;
+	        return this;
+	    },
+	    setW: function setW(target, w) {
+	        target[3] = w || 0;
+	        return this;
+	    },
+	    add: function add(target, a) {
+	        target[0] += a[0];
+	        target[1] += a[1];
+	        target[2] += a[2];
+	        target[3] += a[3];
+	        return this;
+	    },
+	    multiplyVectors: function multiplyVectors(target, a, b) {
+	        target[0] = a[0] * b[0];
+	        target[1] = a[1] * b[1];
+	        target[2] = a[2] * b[2];
+	        target[3] = a[3] * b[3];
+	        return this;
+	    },
+	    multiplyScalar: function multiplyScalar(target, s) {
+	        target[0] *= s;
+	        target[1] *= s;
+	        target[2] *= s;
+	        target[3] *= s;
+	        return this;
+	    },
+	    min: function min(target, value) {
+	        if (target[0] < value) {
+	            target[0] = value;
+	        }
+	        if (target[1] < value) {
+	            target[1] = value;
+	        }
+	        if (target[2] < value) {
+	            target[2] = value;
+	        }
+	        if (target[3] < value) {
+	            target[3] = value;
+	        }
+	        return this;
+	    },
+	    max: function max(target, value) {
+	        if (target[0] > value) {
+	            target[0] = value;
+	        }
+	        if (target[1] > value) {
+	            target[1] = value;
+	        }
+	        if (target[2] > value) {
+	            target[2] = value;
+	        }
+	        if (target[3] > value) {
+	            target[3] = value;
+	        }
+	        return this;
+	    },
+	    clamp: function clamp(target, min, max) {
+	        this.min(target, min);
+	        this.max(target, max);
+	        return this;
 	    }
-	    if (target[1] < value) {
-	      target[1] = value;
-	    }
-	    if (target[2] < value) {
-	      target[2] = value;
-	    }
-	    if (target[3] < value) {
-	      target[3] = value;
-	    }
-	    return this;
-	  },
-	  max: function max(target, value) {
-	    if (target[0] > value) {
-	      target[0] = value;
-	    }
-	    if (target[1] > value) {
-	      target[1] = value;
-	    }
-	    if (target[2] > value) {
-	      target[2] = value;
-	    }
-	    if (target[3] > value) {
-	      target[3] = value;
-	    }
-	    return this;
-	  },
-	  clamp: function clamp(target, min, max) {
-	    this.min(target, min);
-	    this.max(target, max);
-	    return this;
-	  }
 	};
 
 	/**
@@ -22898,41 +22750,41 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Color = function (hex, opacity) {
-	  this.rgba = FSS.Vector4.create();
-	  this.hex = hex || '#000000';
-	  this.opacity = FSS.Utils.isNumber(opacity) ? opacity : 1;
-	  this.set(this.hex, this.opacity);
+	    this.rgba = FSS.Vector4.create();
+	    this.hex = hex || '#000000';
+	    this.opacity = FSS.Utils.isNumber(opacity) ? opacity : 1;
+	    this.set(this.hex, this.opacity);
 	};
 
 	FSS.Color.prototype = {
-	  set: function set(hex, opacity) {
-	    hex = hex.replace('#', '');
+	    set: function set(hex, opacity) {
+	        hex = hex.replace('#', '');
 
-	    var size = hex.length / 3;
+	        var size = hex.length / 3;
 
-	    this.rgba[0] = parseInt(hex.substring(0, size), 16) / 255;
-	    this.rgba[1] = parseInt(hex.substring(size, size * 2), 16) / 255;
-	    this.rgba[2] = parseInt(hex.substring(size * 2, size * 3), 16) / 255;
-	    this.rgba[3] = FSS.Utils.isNumber(opacity) ? opacity : this.rgba[3];
+	        this.rgba[0] = parseInt(hex.substring(0, size), 16) / 255;
+	        this.rgba[1] = parseInt(hex.substring(size, size * 2), 16) / 255;
+	        this.rgba[2] = parseInt(hex.substring(size * 2, size * 3), 16) / 255;
+	        this.rgba[3] = FSS.Utils.isNumber(opacity) ? opacity : this.rgba[3];
 
-	    return this;
-	  },
-	  hexify: function hexify(channel) {
-	    var hex = Math.ceil(channel * 255).toString(16);
-	    if (hex.length === 1) {
-	      hex = '0' + hex;
+	        return this;
+	    },
+	    hexify: function hexify(channel) {
+	        var hex = Math.ceil(channel * 255).toString(16);
+	        if (hex.length === 1) {
+	            hex = '0' + hex;
+	        }
+	        return hex;
+	    },
+	    format: function format() {
+	        var r = this.hexify(this.rgba[0]),
+	            g = this.hexify(this.rgba[1]),
+	            b = this.hexify(this.rgba[2]);
+
+	        this.hex = '#' + r + g + b;
+
+	        return this.hex;
 	    }
-	    return hex;
-	  },
-	  format: function format() {
-	    var r = this.hexify(this.rgba[0]),
-	        g = this.hexify(this.rgba[1]),
-	        b = this.hexify(this.rgba[2]);
-
-	    this.hex = '#' + r + g + b;
-
-	    return this.hex;
-	  }
 	};
 
 	/**
@@ -22940,14 +22792,14 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Object = function () {
-	  this.position = FSS.Vector3.create();
+	    this.position = FSS.Vector3.create();
 	};
 
 	FSS.Object.prototype = {
-	  setPosition: function setPosition(x, y, z) {
-	    FSS.Vector3.set(this.position, x, y, z);
-	    return this;
-	  }
+	    setPosition: function setPosition(x, y, z) {
+	        FSS.Vector3.set(this.position, x, y, z);
+	        return this;
+	    }
 	};
 
 	/**
@@ -22955,10 +22807,10 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Light = function (ambient, diffuse) {
-	  FSS.Object.call(this);
-	  this.ambient = new FSS.Color(ambient || '#FFFFFF');
-	  this.diffuse = new FSS.Color(diffuse || '#FFFFFF');
-	  this.ray = FSS.Vector3.create();
+	    FSS.Object.call(this);
+	    this.ambient = new FSS.Color(ambient || '#FFFFFF');
+	    this.diffuse = new FSS.Color(diffuse || '#FFFFFF');
+	    this.ray = FSS.Vector3.create();
 	};
 
 	FSS.Light.prototype = Object.create(FSS.Object.prototype);
@@ -22968,14 +22820,14 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Vertex = function (x, y, z) {
-	  this.position = FSS.Vector3.create(x, y, z);
+	    this.position = FSS.Vector3.create(x, y, z);
 	};
 
 	FSS.Vertex.prototype = {
-	  setPosition: function setPosition(x, y, z) {
-	    FSS.Vector3.set(this.position, x, y, z);
-	    return this;
-	  }
+	    setPosition: function setPosition(x, y, z) {
+	        FSS.Vector3.set(this.position, x, y, z);
+	        return this;
+	    }
 	};
 
 	/**
@@ -22983,38 +22835,38 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Triangle = function (a, b, c) {
-	  this.a = a || new FSS.Vertex();
-	  this.b = b || new FSS.Vertex();
-	  this.c = c || new FSS.Vertex();
-	  this.vertices = [this.a, this.b, this.c];
-	  this.u = FSS.Vector3.create();
-	  this.v = FSS.Vector3.create();
-	  this.centroid = FSS.Vector3.create();
-	  this.normal = FSS.Vector3.create();
-	  this.color = new FSS.Color();
-	  this.polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-	  this.polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
-	  this.polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
-	  this.polygon.setAttributeNS(null, 'stroke-width', '1');
-	  this.computeCentroid();
-	  this.computeNormal();
+	    this.a = a || new FSS.Vertex();
+	    this.b = b || new FSS.Vertex();
+	    this.c = c || new FSS.Vertex();
+	    this.vertices = [this.a, this.b, this.c];
+	    this.u = FSS.Vector3.create();
+	    this.v = FSS.Vector3.create();
+	    this.centroid = FSS.Vector3.create();
+	    this.normal = FSS.Vector3.create();
+	    this.color = new FSS.Color();
+	    this.polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+	    this.polygon.setAttributeNS(null, 'stroke-linejoin', 'round');
+	    this.polygon.setAttributeNS(null, 'stroke-miterlimit', '1');
+	    this.polygon.setAttributeNS(null, 'stroke-width', '1');
+	    this.computeCentroid();
+	    this.computeNormal();
 	};
 
 	FSS.Triangle.prototype = {
-	  computeCentroid: function computeCentroid() {
-	    this.centroid[0] = this.a.position[0] + this.b.position[0] + this.c.position[0];
-	    this.centroid[1] = this.a.position[1] + this.b.position[1] + this.c.position[1];
-	    this.centroid[2] = this.a.position[2] + this.b.position[2] + this.c.position[2];
-	    FSS.Vector3.divideScalar(this.centroid, 3);
-	    return this;
-	  },
-	  computeNormal: function computeNormal() {
-	    FSS.Vector3.subtractVectors(this.u, this.b.position, this.a.position);
-	    FSS.Vector3.subtractVectors(this.v, this.c.position, this.a.position);
-	    FSS.Vector3.crossVectors(this.normal, this.u, this.v);
-	    FSS.Vector3.normalise(this.normal);
-	    return this;
-	  }
+	    computeCentroid: function computeCentroid() {
+	        this.centroid[0] = this.a.position[0] + this.b.position[0] + this.c.position[0];
+	        this.centroid[1] = this.a.position[1] + this.b.position[1] + this.c.position[1];
+	        this.centroid[2] = this.a.position[2] + this.b.position[2] + this.c.position[2];
+	        FSS.Vector3.divideScalar(this.centroid, 3);
+	        return this;
+	    },
+	    computeNormal: function computeNormal() {
+	        FSS.Vector3.subtractVectors(this.u, this.b.position, this.a.position);
+	        FSS.Vector3.subtractVectors(this.v, this.c.position, this.a.position);
+	        FSS.Vector3.crossVectors(this.normal, this.u, this.v);
+	        FSS.Vector3.normalise(this.normal);
+	        return this;
+	    }
 	};
 
 	/**
@@ -23022,29 +22874,29 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Geometry = function () {
-	  this.vertices = [];
-	  this.triangles = [];
-	  this.dirty = false;
+	    this.vertices = [];
+	    this.triangles = [];
+	    this.dirty = false;
 	};
 
 	FSS.Geometry.prototype = {
-	  update: function update() {
+	    update: function update() {
 
-	    var t = this.triangles.length - 1,
-	        triangle = void 0;
+	        var t = this.triangles.length - 1,
+	            triangle = void 0;
 
-	    if (this.dirty) {
+	        if (this.dirty) {
 
-	      for (t; t >= 0; t -= 1) {
-	        triangle = this.triangles[t];
-	        triangle.computeCentroid();
-	        triangle.computeNormal();
-	      }
+	            for (t; t >= 0; t -= 1) {
+	                triangle = this.triangles[t];
+	                triangle.computeCentroid();
+	                triangle.computeNormal();
+	            }
 
-	      this.dirty = false;
+	            this.dirty = false;
+	        }
+	        return this;
 	    }
-	    return this;
-	  }
 	};
 
 	/**
@@ -23052,73 +22904,73 @@
 	 * @author Matthew Wagerfield, modified by Maksim Surguy to implement Delaunay triangulation
 	 */
 	FSS.Plane = function (width, height, howmany) {
-	  this.render(width, height, howmany);
+	    this.render(width, height, howmany);
 	};
 
 	FSS.Plane.prototype = Object.create(FSS.Geometry.prototype);
 
 	FSS.Plane.prototype.render = function (width, height, howmany) {
 
-	  FSS.Geometry.call(this);
-	  this.width = width || 100;
-	  this.height = height || 100;
+	    FSS.Geometry.call(this);
+	    this.width = width || 100;
+	    this.height = height || 100;
 
-	  // Cache letiables
-	  var x = void 0,
-	      y = void 0,
-	      vertices = new Array(howmany),
-	      offsetX = this.width * -0.5,
-	      offsetY = this.height * 0.5,
-	      i = vertices.length - 1,
-	      triangles = void 0,
-	      v1 = void 0,
-	      v2 = void 0,
-	      v3 = void 0,
-	      t1 = void 0;
+	    // Cache letiables
+	    var x = void 0,
+	        y = void 0,
+	        vertices = new Array(howmany),
+	        offsetX = this.width * -0.5,
+	        offsetY = this.height * 0.5,
+	        i = vertices.length - 1,
+	        triangles = void 0,
+	        v1 = void 0,
+	        v2 = void 0,
+	        v3 = void 0,
+	        t1 = void 0;
 
-	  for (i; i >= 0; i -= 1) {
-	    x = offsetX + Math.random() * width;
-	    y = offsetY - Math.random() * height;
-	    vertices[i] = [x, y];
-	  }
+	    for (i; i >= 0; i -= 1) {
+	        x = offsetX + Math.random() * width;
+	        y = offsetY - Math.random() * height;
+	        vertices[i] = [x, y];
+	    }
 
-	  // Generate additional points on the perimeter so that there are no holes in the pattern
-	  vertices.push([offsetX, offsetY]);
-	  vertices.push([offsetX + width / 2, offsetY]);
-	  vertices.push([offsetX + width, offsetY]);
-	  vertices.push([offsetX + width, offsetY - height / 2]);
-	  vertices.push([offsetX + width, offsetY - height]);
-	  vertices.push([offsetX + width / 2, offsetY - height]);
-	  vertices.push([offsetX, offsetY - height]);
-	  vertices.push([offsetX, offsetY - height / 2]);
+	    // Generate additional points on the perimeter so that there are no holes in the pattern
+	    vertices.push([offsetX, offsetY]);
+	    vertices.push([offsetX + width / 2, offsetY]);
+	    vertices.push([offsetX + width, offsetY]);
+	    vertices.push([offsetX + width, offsetY - height / 2]);
+	    vertices.push([offsetX + width, offsetY - height]);
+	    vertices.push([offsetX + width / 2, offsetY - height]);
+	    vertices.push([offsetX, offsetY - height]);
+	    vertices.push([offsetX, offsetY - height / 2]);
 
-	  // Generate additional randomly placed points on the perimeter
-	  i = 6;
-	  for (i; i >= 0; i -= 1) {
-	    vertices.push([offsetX + Math.random() * width, offsetY]);
-	    vertices.push([offsetX, offsetY - Math.random() * height]);
-	    vertices.push([offsetX + width, offsetY - Math.random() * height]);
-	    vertices.push([offsetX + Math.random() * width, offsetY - height]);
-	  }
+	    // Generate additional randomly placed points on the perimeter
+	    i = 6;
+	    for (i; i >= 0; i -= 1) {
+	        vertices.push([offsetX + Math.random() * width, offsetY]);
+	        vertices.push([offsetX, offsetY - Math.random() * height]);
+	        vertices.push([offsetX + width, offsetY - Math.random() * height]);
+	        vertices.push([offsetX + Math.random() * width, offsetY - height]);
+	    }
 
-	  // Create an array of triangulated coordinates from our vertices
-	  triangles = _delaunay2.default.triangulate(vertices);
-	  i = triangles.length - 1;
+	    // Create an array of triangulated coordinates from our vertices
+	    triangles = _delaunay2.default.triangulate(vertices);
+	    i = triangles.length - 1;
 
-	  for (i; i >= 0; i -= 1) {
+	    for (i; i >= 0; i -= 1) {
 
-	    v1 = new FSS.Vertex(Math.ceil(vertices[triangles[i]][0]), Math.ceil(vertices[triangles[i]][1]));
-	    i -= 1;
-	    v2 = new FSS.Vertex(Math.ceil(vertices[triangles[i]][0]), Math.ceil(vertices[triangles[i]][1]));
-	    i -= 1;
-	    v3 = new FSS.Vertex(Math.ceil(vertices[triangles[i]][0]), Math.ceil(vertices[triangles[i]][1]));
-	    t1 = new FSS.Triangle(v1, v2, v3);
+	        v1 = new FSS.Vertex(Math.ceil(vertices[triangles[i]][0]), Math.ceil(vertices[triangles[i]][1]));
+	        i -= 1;
+	        v2 = new FSS.Vertex(Math.ceil(vertices[triangles[i]][0]), Math.ceil(vertices[triangles[i]][1]));
+	        i -= 1;
+	        v3 = new FSS.Vertex(Math.ceil(vertices[triangles[i]][0]), Math.ceil(vertices[triangles[i]][1]));
+	        t1 = new FSS.Triangle(v1, v2, v3);
 
-	    this.triangles.push(t1);
-	    this.vertices.push(v1);
-	    this.vertices.push(v2);
-	    this.vertices.push(v3);
-	  }
+	        this.triangles.push(t1);
+	        this.vertices.push(v1);
+	        this.vertices.push(v2);
+	        this.vertices.push(v3);
+	    }
 	};
 
 	/**
@@ -23126,9 +22978,9 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Material = function (ambient, diffuse) {
-	  this.ambient = new FSS.Color(ambient || '#444444');
-	  this.diffuse = new FSS.Color(diffuse || '#FFFFFF');
-	  this.slave = new FSS.Color();
+	    this.ambient = new FSS.Color(ambient || '#444444');
+	    this.diffuse = new FSS.Color(diffuse || '#FFFFFF');
+	    this.slave = new FSS.Color();
 	};
 
 	/**
@@ -23136,63 +22988,63 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Mesh = function (geometry, material) {
-	  FSS.Object.call(this);
-	  this.geometry = geometry || new FSS.Geometry();
-	  this.material = material || new FSS.Material();
-	  this.side = FSS.FRONT;
-	  this.visible = true;
+	    FSS.Object.call(this);
+	    this.geometry = geometry || new FSS.Geometry();
+	    this.material = material || new FSS.Material();
+	    this.side = FSS.FRONT;
+	    this.visible = true;
 	};
 
 	FSS.Mesh.prototype = Object.create(FSS.Object.prototype);
 
 	FSS.Mesh.prototype.update = function (lights, calculate) {
-	  var t = void 0,
-	      triangle = void 0,
-	      l = void 0,
-	      light = void 0,
-	      illuminance = void 0;
+	    var t = void 0,
+	        triangle = void 0,
+	        l = void 0,
+	        light = void 0,
+	        illuminance = void 0;
 
-	  // Update Geometry
-	  this.geometry.update();
+	    // Update Geometry
+	    this.geometry.update();
 
-	  // Calculate the triangle colors
-	  if (calculate) {
+	    // Calculate the triangle colors
+	    if (calculate) {
 
-	    // Iterate through Triangles
-	    t = this.geometry.triangles.length - 1;
-	    for (t; t >= 0; t -= 1) {
-	      triangle = this.geometry.triangles[t];
+	        // Iterate through Triangles
+	        t = this.geometry.triangles.length - 1;
+	        for (t; t >= 0; t -= 1) {
+	            triangle = this.geometry.triangles[t];
 
-	      // Reset Triangle Color
-	      FSS.Vector4.set(triangle.color.rgba);
+	            // Reset Triangle Color
+	            FSS.Vector4.set(triangle.color.rgba);
 
-	      // Iterate through Lights
-	      l = lights.length - 1;
-	      for (l; l >= 0; l -= 1) {
+	            // Iterate through Lights
+	            l = lights.length - 1;
+	            for (l; l >= 0; l -= 1) {
 
-	        light = lights[l];
+	                light = lights[l];
 
-	        // Calculate Illuminance
-	        FSS.Vector3.subtractVectors(light.ray, light.position, triangle.centroid);
-	        FSS.Vector3.normalise(light.ray);
+	                // Calculate Illuminance
+	                FSS.Vector3.subtractVectors(light.ray, light.position, triangle.centroid);
+	                FSS.Vector3.normalise(light.ray);
 
-	        illuminance = Math.max(FSS.Vector3.dot(triangle.normal, light.ray), 0);
+	                illuminance = Math.max(FSS.Vector3.dot(triangle.normal, light.ray), 0);
 
-	        // Calculate Ambient Light
-	        FSS.Vector4.multiplyVectors(this.material.slave.rgba, this.material.ambient.rgba, light.ambient.rgba);
-	        FSS.Vector4.add(triangle.color.rgba, this.material.slave.rgba);
+	                // Calculate Ambient Light
+	                FSS.Vector4.multiplyVectors(this.material.slave.rgba, this.material.ambient.rgba, light.ambient.rgba);
+	                FSS.Vector4.add(triangle.color.rgba, this.material.slave.rgba);
 
-	        // Calculate Diffuse Light
-	        FSS.Vector4.multiplyVectors(this.material.slave.rgba, this.material.diffuse.rgba, light.diffuse.rgba);
-	        FSS.Vector4.multiplyScalar(this.material.slave.rgba, illuminance);
-	        FSS.Vector4.add(triangle.color.rgba, this.material.slave.rgba);
-	      }
+	                // Calculate Diffuse Light
+	                FSS.Vector4.multiplyVectors(this.material.slave.rgba, this.material.diffuse.rgba, light.diffuse.rgba);
+	                FSS.Vector4.multiplyScalar(this.material.slave.rgba, illuminance);
+	                FSS.Vector4.add(triangle.color.rgba, this.material.slave.rgba);
+	            }
 
-	      // Clamp & Format Color
-	      FSS.Vector4.clamp(triangle.color.rgba, 0, 1);
+	            // Clamp & Format Color
+	            FSS.Vector4.clamp(triangle.color.rgba, 0, 1);
+	        }
 	    }
-	  }
-	  return this;
+	    return this;
 	};
 
 	/**
@@ -23200,19 +23052,19 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Scene = function () {
-	  this.meshes = [];
-	  this.lights = [];
+	    this.meshes = [];
+	    this.lights = [];
 	};
 
 	FSS.Scene.prototype = {
-	  add: function add(object) {
-	    if (object instanceof FSS.Mesh && ! ~this.meshes.indexOf(object)) {
-	      this.meshes.push(object);
-	    } else if (object instanceof FSS.Light && ! ~this.lights.indexOf(object)) {
-	      this.lights.push(object);
+	    add: function add(object) {
+	        if (object instanceof FSS.Mesh && ! ~this.meshes.indexOf(object)) {
+	            this.meshes.push(object);
+	        } else if (object instanceof FSS.Light && ! ~this.lights.indexOf(object)) {
+	            this.lights.push(object);
+	        }
+	        return this;
 	    }
-	    return this;
-	  }
 	};
 
 	/**
@@ -23220,29 +23072,29 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.Renderer = function () {
-	  this.width = 0;
-	  this.height = 0;
-	  this.halfWidth = 0;
-	  this.halfHeight = 0;
+	    this.width = 0;
+	    this.height = 0;
+	    this.halfWidth = 0;
+	    this.halfHeight = 0;
 	};
 
 	FSS.Renderer.prototype = {
-	  setSize: function setSize(width, height) {
-	    if (this.width === width && this.height === height) {
-	      return;
+	    setSize: function setSize(width, height) {
+	        if (this.width === width && this.height === height) {
+	            return;
+	        }
+	        this.width = width;
+	        this.height = height;
+	        this.halfWidth = this.width * 0.5;
+	        this.halfHeight = this.height * 0.5;
+	        return this;
+	    },
+	    clear: function clear() {
+	        return this;
+	    },
+	    render: function render() {
+	        return this;
 	    }
-	    this.width = width;
-	    this.height = height;
-	    this.halfWidth = this.width * 0.5;
-	    this.halfHeight = this.height * 0.5;
-	    return this;
-	  },
-	  clear: function clear() {
-	    return this;
-	  },
-	  render: function render() {
-	    return this;
-	  }
 	};
 
 	/**
@@ -23250,713 +23102,713 @@
 	 * @author Matthew Wagerfield
 	 */
 	FSS.CanvasRenderer = function () {
-	  FSS.Renderer.call(this);
-	  this.element = document.createElement('canvas');
-	  this.element.style.display = 'block';
-	  this.context = this.element.getContext('2d');
+	    FSS.Renderer.call(this);
+	    this.element = document.createElement('canvas');
+	    this.element.style.display = 'block';
+	    this.context = this.element.getContext('2d');
 
-	  this.context.lineJoin = 'round';
-	  this.context.lineWidth = 1;
+	    this.context.lineJoin = 'round';
+	    this.context.lineWidth = 1;
 
-	  this.setSize(this.element.width, this.element.height);
+	    this.setSize(this.element.width, this.element.height);
 	};
 
 	FSS.CanvasRenderer.prototype = Object.create(FSS.Renderer.prototype);
 
 	FSS.CanvasRenderer.prototype.setSize = function (width, height) {
-	  FSS.Renderer.prototype.setSize.call(this, width, height);
-	  this.element.width = width;
-	  this.element.height = height;
-	  this.context.setTransform(1, 0, 0, -1, this.halfWidth, this.halfHeight);
-	  return this;
+	    FSS.Renderer.prototype.setSize.call(this, width, height);
+	    this.element.width = width;
+	    this.element.height = height;
+	    this.context.setTransform(1, 0, 0, -1, this.halfWidth, this.halfHeight);
+	    return this;
 	};
 
 	FSS.CanvasRenderer.prototype.clear = function () {
-	  FSS.Renderer.prototype.clear.call(this);
-	  this.context.clearRect(-this.halfWidth, -this.halfHeight, this.width, this.height);
-	  return this;
+	    FSS.Renderer.prototype.clear.call(this);
+	    this.context.clearRect(-this.halfWidth, -this.halfHeight, this.width, this.height);
+	    return this;
 	};
 
 	FSS.CanvasRenderer.prototype.render = function (scene, callback) {
 
-	  FSS.Renderer.prototype.render.call(this, scene);
+	    FSS.Renderer.prototype.render.call(this, scene);
 
-	  var m = void 0,
-	      mesh = void 0,
-	      t = void 0,
-	      triangle = void 0,
-	      color = void 0;
+	    var m = void 0,
+	        mesh = void 0,
+	        t = void 0,
+	        triangle = void 0,
+	        color = void 0;
 
-	  // Clear Context
-	  this.clear();
+	    // Clear Context
+	    this.clear();
 
-	  // Update Meshes
-	  m = scene.meshes.length - 1;
+	    // Update Meshes
+	    m = scene.meshes.length - 1;
 
-	  for (m; m >= 0; m -= 1) {
+	    for (m; m >= 0; m -= 1) {
 
-	    mesh = scene.meshes[m];
+	        mesh = scene.meshes[m];
 
-	    mesh.update(scene.lights, true);
+	        mesh.update(scene.lights, true);
 
-	    // Render Triangles
-	    t = mesh.geometry.triangles.length - 1;
+	        // Render Triangles
+	        t = mesh.geometry.triangles.length - 1;
 
-	    for (t; t >= 0; t -= 1) {
-	      triangle = mesh.geometry.triangles[t];
-	      color = triangle.color.format();
-	      this.context.beginPath();
-	      this.context.moveTo(triangle.a.position[0], triangle.a.position[1]);
-	      this.context.lineTo(triangle.b.position[0], triangle.b.position[1]);
-	      this.context.lineTo(triangle.c.position[0], triangle.c.position[1]);
-	      this.context.strokeStyle = color;
-	      this.context.fillStyle = color;
-	      this.context.stroke();
-	      this.context.fill();
-	      this.context.closePath();
+	        for (t; t >= 0; t -= 1) {
+	            triangle = mesh.geometry.triangles[t];
+	            color = triangle.color.format();
+	            this.context.beginPath();
+	            this.context.moveTo(triangle.a.position[0], triangle.a.position[1]);
+	            this.context.lineTo(triangle.b.position[0], triangle.b.position[1]);
+	            this.context.lineTo(triangle.c.position[0], triangle.c.position[1]);
+	            this.context.strokeStyle = color;
+	            this.context.fillStyle = color;
+	            this.context.stroke();
+	            this.context.fill();
+	            this.context.closePath();
+	        }
 	    }
-	  }
 
-	  if (callback !== undefined) {
-	    callback();
-	  }
+	    if (callback !== undefined) {
+	        callback();
+	    }
 
-	  return this;
+	    return this;
 	};
 
 	exports.default = FSS;
 
 /***/ },
-/* 201 */
+/* 197 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	var epsilon = 9.5367431640625e-7;
 
 	var Delaunay = {
 
-	  supertriangle: function supertriangle(vertices) {
+	    supertriangle: function supertriangle(vertices) {
 
-	    var xmin = Number.POSITIVE_INFINITY;
-	    var ymin = Number.POSITIVE_INFINITY;
-	    var xmax = Number.NEGATIVE_INFINITY;
-	    var ymax = Number.NEGATIVE_INFINITY;
-	    var i = vertices.length - 1;
-	    var dx = void 0;
-	    var dy = void 0;
-	    var dmax = void 0;
-	    var xmid = void 0;
-	    var ymid = void 0;
+	        var xmin = Number.POSITIVE_INFINITY;
+	        var ymin = Number.POSITIVE_INFINITY;
+	        var xmax = Number.NEGATIVE_INFINITY;
+	        var ymax = Number.NEGATIVE_INFINITY;
+	        var i = vertices.length - 1;
+	        var dx = void 0;
+	        var dy = void 0;
+	        var dmax = void 0;
+	        var xmid = void 0;
+	        var ymid = void 0;
 
-	    for (i; i >= 0; i -= 1) {
+	        for (i; i >= 0; i -= 1) {
 
-	      if (vertices[i][0] < xmin) {
-	        xmin = vertices[i][0];
-	      }
+	            if (vertices[i][0] < xmin) {
+	                xmin = vertices[i][0];
+	            }
 
-	      if (vertices[i][0] > xmax) {
-	        xmax = vertices[i][0];
-	      }
+	            if (vertices[i][0] > xmax) {
+	                xmax = vertices[i][0];
+	            }
 
-	      if (vertices[i][1] < ymin) {
-	        ymin = vertices[i][1];
-	      }
+	            if (vertices[i][1] < ymin) {
+	                ymin = vertices[i][1];
+	            }
 
-	      if (vertices[i][1] > ymax) {
-	        ymax = vertices[i][1];
-	      }
-	    }
-
-	    dx = xmax - xmin;
-	    dy = ymax - ymin;
-	    dmax = Math.max(dx, dy);
-	    xmid = xmin + dx * 0.5;
-	    ymid = ymin + dy * 0.5;
-
-	    return [[xmid - 20 * dmax, ymid - dmax], [xmid, ymid + 20 * dmax], [xmid + 20 * dmax, ymid - dmax]];
-	  },
-
-	  circumcircle: function circumcircle(vertices, i, j, k) {
-
-	    var x1 = vertices[i][0];
-	    var y1 = vertices[i][1];
-	    var x2 = vertices[j][0];
-	    var y2 = vertices[j][1];
-	    var x3 = vertices[k][0];
-	    var y3 = vertices[k][1];
-	    var fabsy1y2 = Math.abs(y1 - y2);
-	    var fabsy2y3 = Math.abs(y2 - y3);
-	    var xc = void 0;
-	    var yc = void 0;
-	    var m1 = void 0;
-	    var m2 = void 0;
-	    var mx1 = void 0;
-	    var mx2 = void 0;
-	    var my1 = void 0;
-	    var my2 = void 0;
-	    var dx = void 0;
-	    var dy = void 0;
-
-	    if (fabsy1y2 < epsilon) {
-	      m2 = -((x3 - x2) / (y3 - y2));
-	      mx2 = (x2 + x3) / 2.0;
-	      my2 = (y2 + y3) / 2.0;
-	      xc = (x2 + x1) / 2.0;
-	      yc = m2 * (xc - mx2) + my2;
-	    } else if (fabsy2y3 < epsilon) {
-	      m1 = -((x2 - x1) / (y2 - y1));
-	      mx1 = (x1 + x2) / 2.0;
-	      my1 = (y1 + y2) / 2.0;
-	      xc = (x3 + x2) / 2.0;
-	      yc = m1 * (xc - mx1) + my1;
-	    } else {
-	      m1 = -((x2 - x1) / (y2 - y1));
-	      m2 = -((x3 - x2) / (y3 - y2));
-	      mx1 = (x1 + x2) / 2.0;
-	      mx2 = (x2 + x3) / 2.0;
-	      my1 = (y1 + y2) / 2.0;
-	      my2 = (y2 + y3) / 2.0;
-	      xc = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2);
-	      yc = fabsy1y2 > fabsy2y3 ? m1 * (xc - mx1) + my1 : m2 * (xc - mx2) + my2;
-	    }
-
-	    dx = x2 - xc;
-	    dy = y2 - yc;
-
-	    return {
-	      i: i,
-	      j: j,
-	      k: k,
-	      x: xc,
-	      y: yc,
-	      r: dx * dx + dy * dy
-	    };
-	  },
-
-	  dedup: function dedup(edges) {
-
-	    var i = void 0;
-	    var j = edges.length - 1;
-	    var a = void 0;
-	    var b = void 0;
-	    var m = void 0;
-	    var n = void 0;
-
-	    for (j; j > 0; j -= 1) {
-
-	      b = edges[j];
-	      j -= 1;
-	      a = edges[j];
-	      i = j - 1;
-
-	      for (i; i > 0; i -= 1) {
-	        n = edges[i];
-	        i -= 1;
-	        m = edges[i];
-
-	        if (a === m && b === n || a === n && b === m) {
-	          edges.splice(j, 2);
-	          edges.splice(i, 2);
-	          break;
+	            if (vertices[i][1] > ymax) {
+	                ymax = vertices[i][1];
+	            }
 	        }
-	      }
-	    }
-	  },
 
-	  triangulate: function triangulate(vertices) {
+	        dx = xmax - xmin;
+	        dy = ymax - ymin;
+	        dmax = Math.max(dx, dy);
+	        xmid = xmin + dx * 0.5;
+	        ymid = ymin + dy * 0.5;
 
-	    var n = vertices.length;
-	    var i = void 0;
-	    var j = void 0;
-	    var indices = void 0;
-	    var st = void 0;
-	    var open = void 0;
-	    var closed = void 0;
-	    var edges = void 0;
-	    var dx = void 0;
-	    var dy = void 0;
-	    var a = void 0;
-	    var b = void 0;
-	    var c = void 0;
+	        return [[xmid - 20 * dmax, ymid - dmax], [xmid, ymid + 20 * dmax], [xmid + 20 * dmax, ymid - dmax]];
+	    },
 
-	    vertices = vertices.slice(0);
-	    indices = [];
-	    i = n - 1;
+	    circumcircle: function circumcircle(vertices, i, j, k) {
 
-	    for (i; i >= 0; i -= 1) {
-	      indices[i] = i;
-	    }
+	        var x1 = vertices[i][0];
+	        var y1 = vertices[i][1];
+	        var x2 = vertices[j][0];
+	        var y2 = vertices[j][1];
+	        var x3 = vertices[k][0];
+	        var y3 = vertices[k][1];
+	        var fabsy1y2 = Math.abs(y1 - y2);
+	        var fabsy2y3 = Math.abs(y2 - y3);
+	        var xc = void 0;
+	        var yc = void 0;
+	        var m1 = void 0;
+	        var m2 = void 0;
+	        var mx1 = void 0;
+	        var mx2 = void 0;
+	        var my1 = void 0;
+	        var my2 = void 0;
+	        var dx = void 0;
+	        var dy = void 0;
 
-	    indices.sort(function (i, j) {
-	      return vertices[j][0] - vertices[i][0];
-	    });
-
-	    st = Delaunay.supertriangle(vertices);
-	    vertices.push(st[0], st[1], st[2]);
-	    open = [Delaunay.circumcircle(vertices, n, n + 1, n + 2)];
-	    closed = [];
-	    edges = [];
-	    i = indices.length - 1;
-
-	    for (i; i >= 0; i -= 1) {
-
-	      edges.length = 0;
-	      c = indices[i];
-	      j = open.length - 1;
-
-	      for (j; j >= 0; j -= 1) {
-
-	        dx = vertices[c][0] - open[j].x;
-	        if (dx > 0.0 && dx * dx > open[j].r) {
-	          closed.push(open[j]);
-	          open.splice(j, 1);
+	        if (fabsy1y2 < epsilon) {
+	            m2 = -((x3 - x2) / (y3 - y2));
+	            mx2 = (x2 + x3) / 2.0;
+	            my2 = (y2 + y3) / 2.0;
+	            xc = (x2 + x1) / 2.0;
+	            yc = m2 * (xc - mx2) + my2;
+	        } else if (fabsy2y3 < epsilon) {
+	            m1 = -((x2 - x1) / (y2 - y1));
+	            mx1 = (x1 + x2) / 2.0;
+	            my1 = (y1 + y2) / 2.0;
+	            xc = (x3 + x2) / 2.0;
+	            yc = m1 * (xc - mx1) + my1;
 	        } else {
-	          dy = vertices[c][1] - open[j].y;
-	          if (dx * dx + dy * dy - open[j].r <= epsilon) {
-	            edges.push(open[j].i, open[j].j, open[j].j, open[j].k, open[j].k, open[j].i);
-
-	            open.splice(j, 1);
-	          }
+	            m1 = -((x2 - x1) / (y2 - y1));
+	            m2 = -((x3 - x2) / (y3 - y2));
+	            mx1 = (x1 + x2) / 2.0;
+	            mx2 = (x2 + x3) / 2.0;
+	            my1 = (y1 + y2) / 2.0;
+	            my2 = (y2 + y3) / 2.0;
+	            xc = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2);
+	            yc = fabsy1y2 > fabsy2y3 ? m1 * (xc - mx1) + my1 : m2 * (xc - mx2) + my2;
 	        }
-	      }
 
-	      Delaunay.dedup(edges);
+	        dx = x2 - xc;
+	        dy = y2 - yc;
 
-	      j = edges.length - 1;
-	      for (j; j >= 0; j -= 1) {
-	        b = edges[j];
-	        j -= 1;
-	        a = edges[j];
-	        open.push(Delaunay.circumcircle(vertices, a, b, c));
-	      }
+	        return {
+	            i: i,
+	            j: j,
+	            k: k,
+	            x: xc,
+	            y: yc,
+	            r: dx * dx + dy * dy
+	        };
+	    },
+
+	    dedup: function dedup(edges) {
+
+	        var i = void 0;
+	        var j = edges.length - 1;
+	        var a = void 0;
+	        var b = void 0;
+	        var m = void 0;
+	        var n = void 0;
+
+	        for (j; j > 0; j -= 1) {
+
+	            b = edges[j];
+	            j -= 1;
+	            a = edges[j];
+	            i = j - 1;
+
+	            for (i; i > 0; i -= 1) {
+	                n = edges[i];
+	                i -= 1;
+	                m = edges[i];
+
+	                if (a === m && b === n || a === n && b === m) {
+	                    edges.splice(j, 2);
+	                    edges.splice(i, 2);
+	                    break;
+	                }
+	            }
+	        }
+	    },
+
+	    triangulate: function triangulate(vertices) {
+
+	        var n = vertices.length;
+	        var i = void 0;
+	        var j = void 0;
+	        var indices = void 0;
+	        var st = void 0;
+	        var open = void 0;
+	        var closed = void 0;
+	        var edges = void 0;
+	        var dx = void 0;
+	        var dy = void 0;
+	        var a = void 0;
+	        var b = void 0;
+	        var c = void 0;
+
+	        vertices = vertices.slice(0);
+	        indices = [];
+	        i = n - 1;
+
+	        for (i; i >= 0; i -= 1) {
+	            indices[i] = i;
+	        }
+
+	        indices.sort(function (i, j) {
+	            return vertices[j][0] - vertices[i][0];
+	        });
+
+	        st = Delaunay.supertriangle(vertices);
+	        vertices.push(st[0], st[1], st[2]);
+	        open = [Delaunay.circumcircle(vertices, n, n + 1, n + 2)];
+	        closed = [];
+	        edges = [];
+	        i = indices.length - 1;
+
+	        for (i; i >= 0; i -= 1) {
+
+	            edges.length = 0;
+	            c = indices[i];
+	            j = open.length - 1;
+
+	            for (j; j >= 0; j -= 1) {
+
+	                dx = vertices[c][0] - open[j].x;
+	                if (dx > 0.0 && dx * dx > open[j].r) {
+	                    closed.push(open[j]);
+	                    open.splice(j, 1);
+	                } else {
+	                    dy = vertices[c][1] - open[j].y;
+	                    if (dx * dx + dy * dy - open[j].r <= epsilon) {
+	                        edges.push(open[j].i, open[j].j, open[j].j, open[j].k, open[j].k, open[j].i);
+
+	                        open.splice(j, 1);
+	                    }
+	                }
+	            }
+
+	            Delaunay.dedup(edges);
+
+	            j = edges.length - 1;
+	            for (j; j >= 0; j -= 1) {
+	                b = edges[j];
+	                j -= 1;
+	                a = edges[j];
+	                open.push(Delaunay.circumcircle(vertices, a, b, c));
+	            }
+	        }
+
+	        i = open.length - 1;
+
+	        for (i; i >= 0; i -= 1) {
+	            closed.push(open[i]);
+	        }
+
+	        open.length = 0;
+	        i = closed.length - 1;
+
+	        for (i; i >= 0; i -= 1) {
+	            if (closed[i].i < n && closed[i].j < n && closed[i].k < n) {
+	                open.push(closed[i].i, closed[i].j, closed[i].k);
+	            }
+	        }
+
+	        return open;
+	    },
+
+	    contains: function contains(tri, p) {
+
+	        if (p[0] < tri[0][0] && p[0] < tri[1][0] && p[0] < tri[2][0] || p[0] > tri[0][0] && p[0] > tri[1][0] && p[0] > tri[2][0] || p[1] < tri[0][1] && p[1] < tri[1][1] && p[1] < tri[2][1] || p[1] > tri[0][1] && p[1] > tri[1][1] && p[1] > tri[2][1]) {
+	            return null;
+	        }
+
+	        var a = tri[1][0] - tri[0][0];
+	        var b = tri[2][0] - tri[0][0];
+	        var c = tri[1][1] - tri[0][1];
+	        var d = tri[2][1] - tri[0][1];
+	        var i = a * d - b * c;
+	        var u = void 0;
+	        var v = void 0;
+
+	        if (i === 0.0) {
+	            return null;
+	        }
+
+	        u = (d * (p[0] - tri[0][0]) - b * (p[1] - tri[0][1])) / i;
+	        v = (a * (p[1] - tri[0][1]) - c * (p[0] - tri[0][0])) / i;
+
+	        if (u < 0.0 || v < 0.0 || u + v > 1.0) {
+	            return null;
+	        }
+
+	        return [u, v];
 	    }
-
-	    i = open.length - 1;
-
-	    for (i; i >= 0; i -= 1) {
-	      closed.push(open[i]);
-	    }
-
-	    open.length = 0;
-	    i = closed.length - 1;
-
-	    for (i; i >= 0; i -= 1) {
-	      if (closed[i].i < n && closed[i].j < n && closed[i].k < n) {
-	        open.push(closed[i].i, closed[i].j, closed[i].k);
-	      }
-	    }
-
-	    return open;
-	  },
-
-	  contains: function contains(tri, p) {
-
-	    if (p[0] < tri[0][0] && p[0] < tri[1][0] && p[0] < tri[2][0] || p[0] > tri[0][0] && p[0] > tri[1][0] && p[0] > tri[2][0] || p[1] < tri[0][1] && p[1] < tri[1][1] && p[1] < tri[2][1] || p[1] > tri[0][1] && p[1] > tri[1][1] && p[1] > tri[2][1]) {
-	      return null;
-	    }
-
-	    var a = tri[1][0] - tri[0][0];
-	    var b = tri[2][0] - tri[0][0];
-	    var c = tri[1][1] - tri[0][1];
-	    var d = tri[2][1] - tri[0][1];
-	    var i = a * d - b * c;
-	    var u = void 0;
-	    var v = void 0;
-
-	    if (i === 0.0) {
-	      return null;
-	    }
-
-	    u = (d * (p[0] - tri[0][0]) - b * (p[1] - tri[0][1])) / i;
-	    v = (a * (p[1] - tri[0][1]) - c * (p[0] - tri[0][0])) / i;
-
-	    if (u < 0.0 || v < 0.0 || u + v > 1.0) {
-	      return null;
-	    }
-
-	    return [u, v];
-	  }
 
 	};
 
 	exports.default = Delaunay;
 
 /***/ },
-/* 202 */
+/* 198 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 	var Easing = {
 
-	  easeInQuad: function easeInQuad(x, t, b, c, d) {
-	    return c * (t /= d) * t + b;
-	  },
+	    easeInQuad: function easeInQuad(x, t, b, c, d) {
+	        return c * (t /= d) * t + b;
+	    },
 
-	  easeOutQuad: function easeOutQuad(x, t, b, c, d) {
-	    return -c * (t /= d) * (t - 2) + b;
-	  },
+	    easeOutQuad: function easeOutQuad(x, t, b, c, d) {
+	        return -c * (t /= d) * (t - 2) + b;
+	    },
 
-	  easeInOutQuad: function easeInOutQuad(x, t, b, c, d) {
-	    if ((t /= d / 2) < 1) {
-	      return c / 2 * t * t + b;
+	    easeInOutQuad: function easeInOutQuad(x, t, b, c, d) {
+	        if ((t /= d / 2) < 1) {
+	            return c / 2 * t * t + b;
+	        }
+
+	        return -c / 2 * (--t * (t - 2) - 1) + b;
+	    },
+
+	    easeInCubic: function easeInCubic(x, t, b, c, d) {
+	        return c * (t /= d) * t * t + b;
+	    },
+
+	    easeOutCubic: function easeOutCubic(x, t, b, c, d) {
+	        return c * ((t = t / d - 1) * t * t + 1) + b;
+	    },
+
+	    easeInOutCubic: function easeInOutCubic(x, t, b, c, d) {
+	        if ((t /= d / 2) < 1) {
+	            return c / 2 * t * t * t + b;
+	        }
+
+	        return c / 2 * ((t -= 2) * t * t + 2) + b;
+	    },
+
+	    easeInQuart: function easeInQuart(x, t, b, c, d) {
+	        return c * (t /= d) * t * t * t + b;
+	    },
+
+	    easeOutQuart: function easeOutQuart(x, t, b, c, d) {
+	        return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+	    },
+
+	    easeInOutQuart: function easeInOutQuart(x, t, b, c, d) {
+	        if ((t /= d / 2) < 1) {
+	            return c / 2 * t * t * t * t + b;
+	        }
+
+	        return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+	    },
+
+	    easeInQuint: function easeInQuint(x, t, b, c, d) {
+	        return c * (t /= d) * t * t * t * t + b;
+	    },
+
+	    easeOutQuint: function easeOutQuint(x, t, b, c, d) {
+	        return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+	    },
+
+	    easeInOutQuint: function easeInOutQuint(x, t, b, c, d) {
+	        if ((t /= d / 2) < 1) {
+	            return c / 2 * t * t * t * t * t + b;
+	        }
+
+	        return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
+	    },
+
+	    easeInSine: function easeInSine(x, t, b, c, d) {
+	        return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
+	    },
+
+	    easeOutSine: function easeOutSine(x, t, b, c, d) {
+	        return c * Math.sin(t / d * (Math.PI / 2)) + b;
+	    },
+
+	    easeInOutSine: function easeInOutSine(x, t, b, c, d) {
+	        return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
+	    },
+
+	    easeInExpo: function easeInExpo(x, t, b, c, d) {
+	        return t === 0 ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
+	    },
+
+	    easeOutExpo: function easeOutExpo(x, t, b, c, d) {
+	        return t === d ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+	    },
+
+	    easeInOutExpo: function easeInOutExpo(x, t, b, c, d) {
+	        if (t === 0) {
+	            return b;
+	        }
+
+	        if (t === d) {
+	            return b + c;
+	        }
+
+	        if ((t /= d / 2) < 1) {
+	            return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+	        }
+
+	        return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+	    },
+
+	    easeInCirc: function easeInCirc(x, t, b, c, d) {
+	        return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+	    },
+
+	    easeOutCirc: function easeOutCirc(x, t, b, c, d) {
+	        return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+	    },
+
+	    easeInOutCirc: function easeInOutCirc(x, t, b, c, d) {
+	        if ((t /= d / 2) < 1) {
+	            return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
+	        }
+
+	        return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+	    },
+
+	    easeInBack: function easeInBack(x, t, b, c, d, s) {
+	        if (s === undefined) {
+	            s = 1.70158;
+	        }
+
+	        return c * (t /= d) * t * ((s + 1) * t - s) + b;
+	    },
+
+	    easeOutBack: function easeOutBack(x, t, b, c, d, s) {
+	        if (s === undefined) {
+	            s = 1.70158;
+	        }
+
+	        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+	    },
+
+	    easeInOutBack: function easeInOutBack(x, t, b, c, d, s) {
+	        if (s === undefined) {
+	            s = 1.70158;
+	        }
+
+	        if ((t /= d / 2) < 1) {
+	            return c / 2 * (t * t * (((s *= 1.525) + 1) * t - s)) + b;
+	        }
+
+	        return c / 2 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2) + b;
+	    },
+
+	    easeInBounce: function easeInBounce(x, t, b, c, d) {
+	        return c - jQuery.easing.easeOutBounce(x, d - t, 0, c, d) + b;
+	    },
+
+	    easeOutBounce: function easeOutBounce(x, t, b, c, d) {
+	        if ((t /= d) < 1 / 2.75) {
+	            return c * (7.5625 * t * t) + b;
+	        } else if (t < 2 / 2.75) {
+	            return c * (7.5625 * (t -= 1.5 / 2.75) * t + .75) + b;
+	        } else if (t < 2.5 / 2.75) {
+	            return c * (7.5625 * (t -= 2.25 / 2.75) * t + .9375) + b;
+	        } else {
+	            return c * (7.5625 * (t -= 2.625 / 2.75) * t + .984375) + b;
+	        }
+	    },
+
+	    easeInOutBounce: function easeInOutBounce(x, t, b, c, d) {
+	        if (t < d / 2) {
+	            return jQuery.easing.easeInBounce(x, t * 2, 0, c, d) * .5 + b;
+	        }
+
+	        return jQuery.easing.easeOutBounce(x, t * 2 - d, 0, c, d) * .5 + c * .5 + b;
 	    }
-
-	    return -c / 2 * (--t * (t - 2) - 1) + b;
-	  },
-
-	  easeInCubic: function easeInCubic(x, t, b, c, d) {
-	    return c * (t /= d) * t * t + b;
-	  },
-
-	  easeOutCubic: function easeOutCubic(x, t, b, c, d) {
-	    return c * ((t = t / d - 1) * t * t + 1) + b;
-	  },
-
-	  easeInOutCubic: function easeInOutCubic(x, t, b, c, d) {
-	    if ((t /= d / 2) < 1) {
-	      return c / 2 * t * t * t + b;
-	    }
-
-	    return c / 2 * ((t -= 2) * t * t + 2) + b;
-	  },
-
-	  easeInQuart: function easeInQuart(x, t, b, c, d) {
-	    return c * (t /= d) * t * t * t + b;
-	  },
-
-	  easeOutQuart: function easeOutQuart(x, t, b, c, d) {
-	    return -c * ((t = t / d - 1) * t * t * t - 1) + b;
-	  },
-
-	  easeInOutQuart: function easeInOutQuart(x, t, b, c, d) {
-	    if ((t /= d / 2) < 1) {
-	      return c / 2 * t * t * t * t + b;
-	    }
-
-	    return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
-	  },
-
-	  easeInQuint: function easeInQuint(x, t, b, c, d) {
-	    return c * (t /= d) * t * t * t * t + b;
-	  },
-
-	  easeOutQuint: function easeOutQuint(x, t, b, c, d) {
-	    return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
-	  },
-
-	  easeInOutQuint: function easeInOutQuint(x, t, b, c, d) {
-	    if ((t /= d / 2) < 1) {
-	      return c / 2 * t * t * t * t * t + b;
-	    }
-
-	    return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
-	  },
-
-	  easeInSine: function easeInSine(x, t, b, c, d) {
-	    return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
-	  },
-
-	  easeOutSine: function easeOutSine(x, t, b, c, d) {
-	    return c * Math.sin(t / d * (Math.PI / 2)) + b;
-	  },
-
-	  easeInOutSine: function easeInOutSine(x, t, b, c, d) {
-	    return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
-	  },
-
-	  easeInExpo: function easeInExpo(x, t, b, c, d) {
-	    return t === 0 ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
-	  },
-
-	  easeOutExpo: function easeOutExpo(x, t, b, c, d) {
-	    return t === d ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-	  },
-
-	  easeInOutExpo: function easeInOutExpo(x, t, b, c, d) {
-	    if (t === 0) {
-	      return b;
-	    }
-
-	    if (t === d) {
-	      return b + c;
-	    }
-
-	    if ((t /= d / 2) < 1) {
-	      return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-	    }
-
-	    return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
-	  },
-
-	  easeInCirc: function easeInCirc(x, t, b, c, d) {
-	    return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
-	  },
-
-	  easeOutCirc: function easeOutCirc(x, t, b, c, d) {
-	    return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
-	  },
-
-	  easeInOutCirc: function easeInOutCirc(x, t, b, c, d) {
-	    if ((t /= d / 2) < 1) {
-	      return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
-	    }
-
-	    return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
-	  },
-
-	  easeInBack: function easeInBack(x, t, b, c, d, s) {
-	    if (s === undefined) {
-	      s = 1.70158;
-	    }
-
-	    return c * (t /= d) * t * ((s + 1) * t - s) + b;
-	  },
-
-	  easeOutBack: function easeOutBack(x, t, b, c, d, s) {
-	    if (s === undefined) {
-	      s = 1.70158;
-	    }
-
-	    return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
-	  },
-
-	  easeInOutBack: function easeInOutBack(x, t, b, c, d, s) {
-	    if (s === undefined) {
-	      s = 1.70158;
-	    }
-
-	    if ((t /= d / 2) < 1) {
-	      return c / 2 * (t * t * (((s *= 1.525) + 1) * t - s)) + b;
-	    }
-
-	    return c / 2 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2) + b;
-	  },
-
-	  easeInBounce: function easeInBounce(x, t, b, c, d) {
-	    return c - jQuery.easing.easeOutBounce(x, d - t, 0, c, d) + b;
-	  },
-
-	  easeOutBounce: function easeOutBounce(x, t, b, c, d) {
-	    if ((t /= d) < 1 / 2.75) {
-	      return c * (7.5625 * t * t) + b;
-	    } else if (t < 2 / 2.75) {
-	      return c * (7.5625 * (t -= 1.5 / 2.75) * t + .75) + b;
-	    } else if (t < 2.5 / 2.75) {
-	      return c * (7.5625 * (t -= 2.25 / 2.75) * t + .9375) + b;
-	    } else {
-	      return c * (7.5625 * (t -= 2.625 / 2.75) * t + .984375) + b;
-	    }
-	  },
-
-	  easeInOutBounce: function easeInOutBounce(x, t, b, c, d) {
-	    if (t < d / 2) {
-	      return jQuery.easing.easeInBounce(x, t * 2, 0, c, d) * .5 + b;
-	    }
-
-	    return jQuery.easing.easeOutBounce(x, t * 2 - d, 0, c, d) * .5 + c * .5 + b;
-	  }
 
 	};
 
 	module.exports = Easing;
 
 /***/ },
-/* 203 */
+/* 199 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	var Utils = {
 
-	  extend: function extend(defaults, options) {
-	    var extended = {};
-	    var prop = void 0;
-	    for (prop in defaults) {
-	      if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
-	        extended[prop] = defaults[prop];
-	      }
-	    }
-	    for (prop in options) {
-	      if (Object.prototype.hasOwnProperty.call(options, prop)) {
-	        extended[prop] = options[prop];
-	      }
-	    }
-	    return extended;
-	  },
+	    extend: function extend(defaults, options) {
+	        var extended = {};
+	        var prop = void 0;
+	        for (prop in defaults) {
+	            if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
+	                extended[prop] = defaults[prop];
+	            }
+	        }
+	        for (prop in options) {
+	            if (Object.prototype.hasOwnProperty.call(options, prop)) {
+	                extended[prop] = options[prop];
+	            }
+	        }
+	        return extended;
+	    },
 
-	  polyfil: function polyfil() {
+	    polyfil: function polyfil() {
 
-	    var lastTime = 0;
-	    var vendors = ['ms', 'moz', 'webkit', 'o'];
+	        var lastTime = 0;
+	        var vendors = ['ms', 'moz', 'webkit', 'o'];
 
-	    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-	      window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-	      window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
-	    }
+	        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+	            window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+	            window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+	        }
 
-	    if (!window.requestAnimationFrame) {
-	      window.requestAnimationFrame = function (callback) {
-	        var currTime = new Date().getTime();
-	        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-	        var id = window.setTimeout(function () {
-	          callback(currTime + timeToCall);
-	        }, timeToCall);
-	        lastTime = currTime + timeToCall;
-	        return id;
-	      };
-	    }
+	        if (!window.requestAnimationFrame) {
+	            window.requestAnimationFrame = function (callback) {
+	                var currTime = new Date().getTime();
+	                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+	                var id = window.setTimeout(function () {
+	                    callback(currTime + timeToCall);
+	                }, timeToCall);
+	                lastTime = currTime + timeToCall;
+	                return id;
+	            };
+	        }
 
-	    if (!window.cancelAnimationFrame) {
-	      window.cancelAnimationFrame = function (id) {
-	        clearTimeout(id);
-	      };
-	    }
-	  },
+	        if (!window.cancelAnimationFrame) {
+	            window.cancelAnimationFrame = function (id) {
+	                clearTimeout(id);
+	            };
+	        }
+	    },
 
-	  polyfilMatchMedia: function polyfilMatchMedia() {
+	    polyfilMatchMedia: function polyfilMatchMedia() {
 
-	    /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license */
+	        /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license */
 
-	    window.matchMedia || (window.matchMedia = function () {
-	      "use strict";
+	        window.matchMedia || (window.matchMedia = function () {
+	            "use strict";
 
-	      // For browsers that support matchMedium api such as IE 9 and webkit
+	            // For browsers that support matchMedium api such as IE 9 and webkit
 
-	      var styleMedia = window.styleMedia || window.media;
+	            var styleMedia = window.styleMedia || window.media;
 
-	      // For those that don't support matchMedium
-	      if (!styleMedia) {
+	            // For those that don't support matchMedium
+	            if (!styleMedia) {
+	                (function () {
+	                    var style = document.createElement('style'),
+	                        script = document.getElementsByTagName('script')[0],
+	                        info = null;
+
+	                    style.type = 'text/css';
+	                    style.id = 'matchmediajs-test';
+
+	                    script.parentNode.insertBefore(style, script);
+
+	                    // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+	                    info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
+
+	                    styleMedia = {
+	                        matchMedium: function matchMedium(media) {
+	                            var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+
+	                            // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+	                            if (style.styleSheet) {
+	                                style.styleSheet.cssText = text;
+	                            } else {
+	                                style.textContent = text;
+	                            }
+
+	                            // Test if media query is true or false
+	                            return info.width === '1px';
+	                        }
+	                    };
+	                })();
+	            }
+
+	            return function (media) {
+	                return {
+	                    matches: styleMedia.matchMedium(media || 'all'),
+	                    media: media || 'all'
+	                };
+	            };
+	        }());
+
+	        /*! matchMedia() polyfill addListener/removeListener extension. Author & copyright (c) 2012: Scott Jehl. Dual MIT/BSD license */
 	        (function () {
-	          var style = document.createElement('style'),
-	              script = document.getElementsByTagName('script')[0],
-	              info = null;
-
-	          style.type = 'text/css';
-	          style.id = 'matchmediajs-test';
-
-	          script.parentNode.insertBefore(style, script);
-
-	          // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
-	          info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
-
-	          styleMedia = {
-	            matchMedium: function matchMedium(media) {
-	              var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
-
-	              // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
-	              if (style.styleSheet) {
-	                style.styleSheet.cssText = text;
-	              } else {
-	                style.textContent = text;
-	              }
-
-	              // Test if media query is true or false
-	              return info.width === '1px';
+	            // Bail out for browsers that have addListener support
+	            if (window.matchMedia && window.matchMedia('all').addListener) {
+	                return false;
 	            }
-	          };
+
+	            var localMatchMedia = window.matchMedia,
+	                hasMediaQueries = localMatchMedia('only all').matches,
+	                isListening = false,
+	                timeoutID = 0,
+	                // setTimeout for debouncing 'handleChange'
+	            queries = [],
+	                // Contains each 'mql' and associated 'listeners' if 'addListener' is used
+	            handleChange = function handleChange() {
+	                // Debounce
+	                clearTimeout(timeoutID);
+
+	                timeoutID = setTimeout(function () {
+	                    for (var i = 0, il = queries.length; i < il; i++) {
+	                        var mql = queries[i].mql,
+	                            listeners = queries[i].listeners || [],
+	                            matches = localMatchMedia(mql.media).matches;
+
+	                        // Update mql.matches value and call listeners
+	                        // Fire listeners only if transitioning to or from matched state
+	                        if (matches !== mql.matches) {
+	                            mql.matches = matches;
+
+	                            for (var j = 0, jl = listeners.length; j < jl; j++) {
+	                                listeners[j].call(window, mql);
+	                            }
+	                        }
+	                    }
+	                }, 30);
+	            };
+
+	            window.matchMedia = function (media) {
+	                var mql = localMatchMedia(media),
+	                    listeners = [],
+	                    index = 0;
+
+	                mql.addListener = function (listener) {
+	                    // Changes would not occur to css media type so return now (Affects IE <= 8)
+	                    if (!hasMediaQueries) {
+	                        return;
+	                    }
+
+	                    // Set up 'resize' listener for browsers that support CSS3 media queries (Not for IE <= 8)
+	                    // There should only ever be 1 resize listener running for performance
+	                    if (!isListening) {
+	                        isListening = true;
+	                        window.addEventListener('resize', handleChange, true);
+	                    }
+
+	                    // Push object only if it has not been pushed already
+	                    if (index === 0) {
+	                        index = queries.push({
+	                            mql: mql,
+	                            listeners: listeners
+	                        });
+	                    }
+
+	                    listeners.push(listener);
+	                };
+
+	                mql.removeListener = function (listener) {
+	                    for (var i = 0, il = listeners.length; i < il; i++) {
+	                        if (listeners[i] === listener) {
+	                            listeners.splice(i, 1);
+	                        }
+	                    }
+	                };
+
+	                return mql;
+	            };
 	        })();
-	      }
-
-	      return function (media) {
-	        return {
-	          matches: styleMedia.matchMedium(media || 'all'),
-	          media: media || 'all'
-	        };
-	      };
-	    }());
-
-	    /*! matchMedia() polyfill addListener/removeListener extension. Author & copyright (c) 2012: Scott Jehl. Dual MIT/BSD license */
-	    (function () {
-	      // Bail out for browsers that have addListener support
-	      if (window.matchMedia && window.matchMedia('all').addListener) {
-	        return false;
-	      }
-
-	      var localMatchMedia = window.matchMedia,
-	          hasMediaQueries = localMatchMedia('only all').matches,
-	          isListening = false,
-	          timeoutID = 0,
-	          // setTimeout for debouncing 'handleChange'
-	      queries = [],
-	          // Contains each 'mql' and associated 'listeners' if 'addListener' is used
-	      handleChange = function handleChange() {
-	        // Debounce
-	        clearTimeout(timeoutID);
-
-	        timeoutID = setTimeout(function () {
-	          for (var i = 0, il = queries.length; i < il; i++) {
-	            var mql = queries[i].mql,
-	                listeners = queries[i].listeners || [],
-	                matches = localMatchMedia(mql.media).matches;
-
-	            // Update mql.matches value and call listeners
-	            // Fire listeners only if transitioning to or from matched state
-	            if (matches !== mql.matches) {
-	              mql.matches = matches;
-
-	              for (var j = 0, jl = listeners.length; j < jl; j++) {
-	                listeners[j].call(window, mql);
-	              }
-	            }
-	          }
-	        }, 30);
-	      };
-
-	      window.matchMedia = function (media) {
-	        var mql = localMatchMedia(media),
-	            listeners = [],
-	            index = 0;
-
-	        mql.addListener = function (listener) {
-	          // Changes would not occur to css media type so return now (Affects IE <= 8)
-	          if (!hasMediaQueries) {
-	            return;
-	          }
-
-	          // Set up 'resize' listener for browsers that support CSS3 media queries (Not for IE <= 8)
-	          // There should only ever be 1 resize listener running for performance
-	          if (!isListening) {
-	            isListening = true;
-	            window.addEventListener('resize', handleChange, true);
-	          }
-
-	          // Push object only if it has not been pushed already
-	          if (index === 0) {
-	            index = queries.push({
-	              mql: mql,
-	              listeners: listeners
-	            });
-	          }
-
-	          listeners.push(listener);
-	        };
-
-	        mql.removeListener = function (listener) {
-	          for (var i = 0, il = listeners.length; i < il; i++) {
-	            if (listeners[i] === listener) {
-	              listeners.splice(i, 1);
-	            }
-	          }
-	        };
-
-	        return mql;
-	      };
-	    })();
-	  }
+	    }
 	};
 
 	exports.default = Utils;
 
 /***/ },
-/* 204 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23969,180 +23821,180 @@
 
 	var EventDispatcher = {
 
-	  elements: [],
-	  windowProperties: {},
-	  isTicking: false,
-	  dispatchedEvents: 0,
-	  docElement: document.documentElement,
+	    elements: [],
+	    windowProperties: {},
+	    isTicking: false,
+	    dispatchedEvents: 0,
+	    docElement: document.documentElement,
 
-	  getWindowProperties: function getWindowProperties() {
+	    getWindowProperties: function getWindowProperties() {
 
-	    return EventDispatcher.windowProperties;
-	  },
+	        return EventDispatcher.windowProperties;
+	    },
 
-	  setWindowProperties: function setWindowProperties() {
+	    setWindowProperties: function setWindowProperties() {
 
-	    EventDispatcher.windowProperties = {
-	      top: (window.pageYOffset || this.docElement.scrollTop) - (this.docElement.clientTop || 0),
-	      left: (window.pageXOffset || this.docElement.scrollLeft) - (this.docElement.clientLeft || 0),
-	      width: window.innerWidth,
-	      height: window.innerHeight
-	    };
-	  },
+	        EventDispatcher.windowProperties = {
+	            top: (window.pageYOffset || this.docElement.scrollTop) - (this.docElement.clientTop || 0),
+	            left: (window.pageXOffset || this.docElement.scrollLeft) - (this.docElement.clientLeft || 0),
+	            width: window.innerWidth,
+	            height: window.innerHeight
+	        };
+	    },
 
-	  initialise: function initialise() {
-
-	    EventDispatcher.setWindowProperties();
-
-	    window.addEventListener('scroll', function (e) {
-	      EventDispatcher.dispatchScrollEvents(e);
-	    });
-
-	    window.addEventListener('resize', function (e) {
-	      EventDispatcher.dispatchResizeEvents(e);
-	    });
-	  },
-
-	  dispatchResizeEvents: function dispatchResizeEvents(e) {
-
-	    //Recalibrate all elements...
-	    e = e || {};
-
-	    if (!EventDispatcher.isTicking) {
-
-	      EventDispatcher.isTicking = true;
-	      EventDispatcher.dispatchedEvents = 0;
-
-	      window.requestAnimationFrame(function () {
-
-	        var i = 0;
-	        var l = EventDispatcher.elements.length;
-	        var element = void 0;
-	        var boundingBox = void 0;
+	    initialise: function initialise() {
 
 	        EventDispatcher.setWindowProperties();
 
-	        for (i; i < l; i += 1) {
+	        window.addEventListener('scroll', function (e) {
+	            EventDispatcher.dispatchScrollEvents(e);
+	        });
 
-	          element = EventDispatcher.elements[i];
+	        window.addEventListener('resize', function (e) {
+	            EventDispatcher.dispatchResizeEvents(e);
+	        });
+	    },
 
-	          if (typeof element.events.resize === 'function') {
+	    dispatchResizeEvents: function dispatchResizeEvents(e) {
 
-	            boundingBox = element.element.getBoundingClientRect();
+	        //Recalibrate all elements...
+	        e = e || {};
 
-	            element.boundingBox = {
-	              top: boundingBox.top + EventDispatcher.windowProperties.top,
-	              bottom: boundingBox.bottom + EventDispatcher.windowProperties.top,
-	              left: boundingBox.left + EventDispatcher.windowProperties.left,
-	              right: boundingBox.right + EventDispatcher.windowProperties.left,
-	              height: boundingBox.height,
-	              width: boundingBox.width
-	            };
+	        if (!EventDispatcher.isTicking) {
 
-	            EventDispatcher.dispatchedEvents += 1;
+	            EventDispatcher.isTicking = true;
+	            EventDispatcher.dispatchedEvents = 0;
 
-	            e.boundingBox = element.boundingBox;
-	            e.windowProperties = EventDispatcher.windowProperties;
+	            window.requestAnimationFrame(function () {
 
-	            element.events.resize(e, EventDispatcher.eventComplete); //Is visible. Trigger scroll event...
-	          }
+	                var i = 0;
+	                var l = EventDispatcher.elements.length;
+	                var element = void 0;
+	                var boundingBox = void 0;
+
+	                EventDispatcher.setWindowProperties();
+
+	                for (i; i < l; i += 1) {
+
+	                    element = EventDispatcher.elements[i];
+
+	                    if (typeof element.events.resize === 'function') {
+
+	                        boundingBox = element.element.getBoundingClientRect();
+
+	                        element.boundingBox = {
+	                            top: boundingBox.top + EventDispatcher.windowProperties.top,
+	                            bottom: boundingBox.bottom + EventDispatcher.windowProperties.top,
+	                            left: boundingBox.left + EventDispatcher.windowProperties.left,
+	                            right: boundingBox.right + EventDispatcher.windowProperties.left,
+	                            height: boundingBox.height,
+	                            width: boundingBox.width
+	                        };
+
+	                        EventDispatcher.dispatchedEvents += 1;
+
+	                        e.boundingBox = element.boundingBox;
+	                        e.windowProperties = EventDispatcher.windowProperties;
+
+	                        element.events.resize(e, EventDispatcher.eventComplete); //Is visible. Trigger scroll event...
+	                    }
+	                }
+
+	                if (EventDispatcher.dispatchedEvents === 0) {
+	                    //No events dispatched...
+	                    EventDispatcher.isTicking = false;
+	                }
+	            }, null);
 	        }
+	    },
 
-	        if (EventDispatcher.dispatchedEvents === 0) {
-	          //No events dispatched...
-	          EventDispatcher.isTicking = false;
+	    dispatchScrollEvents: function dispatchScrollEvents(e) {
+
+	        e = e || {};
+
+	        if (!EventDispatcher.isTicking) {
+
+	            EventDispatcher.isTicking = true;
+	            EventDispatcher.dispatchedEvents = 0;
+
+	            window.requestAnimationFrame(function () {
+
+	                var i = 0;
+	                var l = EventDispatcher.elements.length;
+	                var element = void 0;
+
+	                var w = {
+	                    top: (window.pageYOffset || EventDispatcher.docElement.scrollTop) - (EventDispatcher.docElement.clientTop || 0),
+	                    left: (window.pageXOffset || EventDispatcher.docElement.scrollLeft) - (EventDispatcher.docElement.clientLeft || 0),
+	                    width: EventDispatcher.windowProperties.width,
+	                    height: EventDispatcher.windowProperties.height
+	                };
+
+	                for (i; i < l; i += 1) {
+
+	                    element = EventDispatcher.elements[i];
+
+	                    if (typeof element.events.scroll === 'function') {
+
+	                        if (w.top + w.height >= element.boundingBox.top && w.top <= element.boundingBox.bottom && w.left + w.width >= element.boundingBox.left && w.left <= element.boundingBox.right) {
+
+	                            EventDispatcher.dispatchedEvents += 1;
+
+	                            e.boundingBox = element.boundingBox;
+	                            e.windowProperties = w;
+
+	                            element.events.scroll(e, EventDispatcher.eventComplete); //Is visible. Trigger scroll event...
+	                        }
+	                    }
+	                }
+
+	                if (EventDispatcher.dispatchedEvents === 0) {
+	                    //No events dispatched...
+	                    EventDispatcher.isTicking = false;
+	                }
+	            }, null);
 	        }
-	      }, null);
-	    }
-	  },
+	    },
 
-	  dispatchScrollEvents: function dispatchScrollEvents(e) {
+	    eventComplete: function eventComplete() {
 
-	    e = e || {};
+	        EventDispatcher.dispatchedEvents -= 1;
 
-	    if (!EventDispatcher.isTicking) {
+	        if (!EventDispatcher.dispatchedEvents) {
+	            //0
+	            EventDispatcher.isTicking = false;
+	        }
+	    },
 
-	      EventDispatcher.isTicking = true;
-	      EventDispatcher.dispatchedEvents = 0;
+	    add: function add(element, events) {
 
-	      window.requestAnimationFrame(function () {
+	        var boundingBox = void 0;
 
-	        var i = 0;
-	        var l = EventDispatcher.elements.length;
-	        var element = void 0;
+	        element = _reactDom2.default.findDOMNode(element);
+	        boundingBox = element.getBoundingClientRect();
 
-	        var w = {
-	          top: (window.pageYOffset || EventDispatcher.docElement.scrollTop) - (EventDispatcher.docElement.clientTop || 0),
-	          left: (window.pageXOffset || EventDispatcher.docElement.scrollLeft) - (EventDispatcher.docElement.clientLeft || 0),
-	          width: EventDispatcher.windowProperties.width,
-	          height: EventDispatcher.windowProperties.height
+	        boundingBox = {
+	            top: boundingBox.top + EventDispatcher.windowProperties.top,
+	            bottom: boundingBox.bottom + EventDispatcher.windowProperties.top,
+	            left: boundingBox.left + EventDispatcher.windowProperties.left,
+	            right: boundingBox.right + EventDispatcher.windowProperties.left,
+	            height: boundingBox.height,
+	            width: boundingBox.width
 	        };
 
-	        for (i; i < l; i += 1) {
+	        EventDispatcher.elements.push({
+	            element: element,
+	            boundingBox: boundingBox,
+	            events: events
+	        });
 
-	          element = EventDispatcher.elements[i];
-
-	          if (typeof element.events.scroll === 'function') {
-
-	            if (w.top + w.height >= element.boundingBox.top && w.top <= element.boundingBox.bottom && w.left + w.width >= element.boundingBox.left && w.left <= element.boundingBox.right) {
-
-	              EventDispatcher.dispatchedEvents += 1;
-
-	              e.boundingBox = element.boundingBox;
-	              e.windowProperties = w;
-
-	              element.events.scroll(e, EventDispatcher.eventComplete); //Is visible. Trigger scroll event...
-	            }
-	          }
+	        if (typeof events.registered === 'function') {
+	            events.registered({
+	                windowProperties: EventDispatcher.windowProperties,
+	                boundingBox: boundingBox
+	            });
 	        }
-
-	        if (EventDispatcher.dispatchedEvents === 0) {
-	          //No events dispatched...
-	          EventDispatcher.isTicking = false;
-	        }
-	      }, null);
 	    }
-	  },
-
-	  eventComplete: function eventComplete() {
-
-	    EventDispatcher.dispatchedEvents -= 1;
-
-	    if (!EventDispatcher.dispatchedEvents) {
-	      //0
-	      EventDispatcher.isTicking = false;
-	    }
-	  },
-
-	  add: function add(element, events) {
-
-	    var boundingBox = void 0;
-
-	    element = _reactDom2.default.findDOMNode(element);
-	    boundingBox = element.getBoundingClientRect();
-
-	    boundingBox = {
-	      top: boundingBox.top + EventDispatcher.windowProperties.top,
-	      bottom: boundingBox.bottom + EventDispatcher.windowProperties.top,
-	      left: boundingBox.left + EventDispatcher.windowProperties.left,
-	      right: boundingBox.right + EventDispatcher.windowProperties.left,
-	      height: boundingBox.height,
-	      width: boundingBox.width
-	    };
-
-	    EventDispatcher.elements.push({
-	      element: element,
-	      boundingBox: boundingBox,
-	      events: events
-	    });
-
-	    if (typeof events.registered === 'function') {
-	      events.registered({
-	        windowProperties: EventDispatcher.windowProperties,
-	        boundingBox: boundingBox
-	      });
-	    }
-	  }
 
 	};
 
@@ -24150,26 +24002,26 @@
 
 	module.exports = {
 
-	  register: function register(element, events) {
-	    EventDispatcher.add(element, events);
-	  },
+	    register: function register(element, events) {
+	        EventDispatcher.add(element, events);
+	    },
 
-	  getWindowProperties: function getWindowProperties() {
-	    return EventDispatcher.getWindowProperties();
-	  },
+	    getWindowProperties: function getWindowProperties() {
+	        return EventDispatcher.getWindowProperties();
+	    },
 
-	  unregister: function unregister() {}
+	    unregister: function unregister() {}
 
 	};
 
 /***/ },
-/* 205 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24191,43 +24043,43 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Project = function (_React$Component) {
-	  _inherits(Project, _React$Component);
+	    _inherits(Project, _React$Component);
 
-	  function Project(props) {
-	    _classCallCheck(this, Project);
+	    function Project(props) {
+	        _classCallCheck(this, Project);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props));
-	  }
-
-	  _createClass(Project, [{
-	    key: 'render',
-	    value: function render() {
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Project'
-	        )
-	      );
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props));
 	    }
-	  }]);
 
-	  return Project;
+	    _createClass(Project, [{
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Project'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Project;
 	}(_react2.default.Component);
 
 	exports.default = Project;
 
 /***/ },
-/* 206 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24249,44 +24101,197 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Award = function (_React$Component) {
-	  _inherits(Award, _React$Component);
+	    _inherits(Award, _React$Component);
 
-	  function Award(props) {
-	    _classCallCheck(this, Award);
+	    function Award(props) {
+	        _classCallCheck(this, Award);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Award).call(this, props));
-	  }
-
-	  _createClass(Award, [{
-	    key: 'render',
-	    value: function render() {
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Award ',
-	          this.props.aId
-	        )
-	      );
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Award).call(this, props));
 	    }
-	  }]);
 
-	  return Award;
+	    _createClass(Award, [{
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Award ',
+	                    this.props.aId
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Award;
 	}(_react2.default.Component);
 
 	exports.default = Award;
 
 /***/ },
-/* 207 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(38);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Award = function (_React$Component) {
+	    _inherits(Award, _React$Component);
+
+	    function Award(props) {
+	        _classCallCheck(this, Award);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Award).call(this, props));
+	    }
+
+	    _createClass(Award, [{
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'Award List'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Award;
+	}(_react2.default.Component);
+
+	exports.default = Award;
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(38);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _link = __webpack_require__(205);
+
+	var _link2 = _interopRequireDefault(_link);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Project = function (_React$Component) {
+	    _inherits(Project, _React$Component);
+
+	    function Project(props) {
+	        _classCallCheck(this, Project);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props));
+
+	        _this.state = {
+	            isMenuOpen: false
+	        };
+
+	        _this.getContent = _this.getContent.bind(_this);
+	        _this.handleClick = _this.handleClick.bind(_this);
+
+	        return _this;
+	    }
+
+	    _createClass(Project, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+
+	            this.setState({
+	                isMenuOpen: !this.state.isMenuOpen
+	            });
+	        }
+	    }, {
+	        key: 'getContent',
+	        value: function getContent() {
+
+	            if (this.state.isMenuOpen) {
+
+	                return _react2.default.createElement(
+	                    'nav',
+	                    null,
+	                    _react2.default.createElement(_link2.default, { title: 'Home', to: '' }),
+	                    _react2.default.createElement(_link2.default, { title: 'Award', to: 'award' }),
+	                    _react2.default.createElement(_link2.default, { title: 'Award 1', to: 'award', lid: '1' }),
+	                    _react2.default.createElement(_link2.default, { title: 'Project', to: 'project' })
+	                );
+	            } else {
+
+	                return "";
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'navigation' },
+	                this.getContent(),
+	                _react2.default.createElement('button', { className: 'menu', onClick: this.handleClick })
+	            );
+	        }
+	    }]);
+
+	    return Project;
+	}(_react2.default.Component);
+
+	exports.default = Project;
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -24303,7 +24308,7 @@
 
 	var _reactRedux = __webpack_require__(168);
 
-	var _app = __webpack_require__(198);
+	var _app = __webpack_require__(194);
 
 	var AppActions = _interopRequireWildcard(_app);
 
@@ -24318,113 +24323,55 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var LinkClass = function (_React$Component) {
-	  _inherits(LinkClass, _React$Component);
+	    _inherits(LinkClass, _React$Component);
 
-	  function LinkClass(props) {
-	    _classCallCheck(this, LinkClass);
+	    function LinkClass(props) {
+	        _classCallCheck(this, LinkClass);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LinkClass).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LinkClass).call(this, props));
 
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(LinkClass, [{
-	    key: 'handleClick',
-	    value: function handleClick() {
-
-	      var hashTag = '#' + this.props.to;
-	      hashTag += this.props.lid !== undefined ? ':' + this.props.lid : '';
-
-	      history.pushState(null, null, hashTag);
-
-	      this.props.actions.setAppState({
-	        state: this.props.to,
-	        id: this.props.lid || -1
-	      });
+	        _this.handleClick = _this.handleClick.bind(_this);
+	        return _this;
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'button',
-	        { onClick: this.handleClick },
-	        this.props.title
-	      );
-	    }
-	  }]);
 
-	  return LinkClass;
+	    _createClass(LinkClass, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+
+	            var hashTag = '#' + this.props.to;
+	            hashTag += this.props.lid !== undefined ? ':' + this.props.lid : '';
+
+	            history.pushState(null, null, hashTag);
+
+	            this.props.actions.setAppState({
+	                state: this.props.to,
+	                id: this.props.lid || -1
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'button',
+	                { onClick: this.handleClick },
+	                this.props.title
+	            );
+	        }
+	    }]);
+
+	    return LinkClass;
 	}(_react2.default.Component);
 
 	function mapDispatchToProps(dispatch) {
 
-	  return {
-	    actions: (0, _redux.bindActionCreators)(AppActions, dispatch)
-	  };
+	    return {
+	        actions: (0, _redux.bindActionCreators)(AppActions, dispatch)
+	    };
 	}
 
 	var Link = (0, _reactRedux.connect)(null, mapDispatchToProps)(LinkClass);
 
 	exports.default = Link;
-
-/***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(38);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Award = function (_React$Component) {
-	  _inherits(Award, _React$Component);
-
-	  function Award(props) {
-	    _classCallCheck(this, Award);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Award).call(this, props));
-	  }
-
-	  _createClass(Award, [{
-	    key: 'render',
-	    value: function render() {
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Award List'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Award;
-	}(_react2.default.Component);
-
-	exports.default = Award;
 
 /***/ }
 /******/ ]);

@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux'
+import {
+    combineReducers
+} from 'redux'
 import portfolio from './portfolio'
 
 export default combineReducers({
-  portfolio
+    portfolio
 })
