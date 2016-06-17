@@ -22396,7 +22396,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { ref: 'polygon', className: 'polygon' },
-	                _react2.default.createElement('img', { className: 'polygon-logo', src: './img/gwg.svg', ref: 'logo' })
+	                _react2.default.createElement('img', { className: 'polygon-logo', src: './static/img/gwg.svg', ref: 'logo' })
 	            );
 	        }
 	    }]);

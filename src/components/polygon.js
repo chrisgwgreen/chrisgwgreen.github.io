@@ -195,7 +195,7 @@ class Polygon extends Component {
     render() {
         return (
             <div ref="polygon" className="polygon">
-                <img className="polygon-logo" src="./img/gwg.svg" ref="logo"/>
+                <img className="polygon-logo" src="./static/img/gwg.svg" ref="logo"/>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import gutil from 'gulp-util';
 import path from 'path';
 import gulpWebpack from 'webpack-stream';
 import webpack from 'webpack';
+import webpackConfig from '../webpack.config.js';
 
 module.exports = (project) => {
 
@@ -13,32 +14,30 @@ module.exports = (project) => {
         gutil.log('----------------------------------------');
 
         gulp.src(project.src.client)
-            .pipe(gulpWebpack({
-                module: {
-                    loaders: [{
-                        test: /\.js$/,
-                        loader: 'babel',
-                        exclude: /(node_modules)/,
-                        query: {
-                            presets: ['es2015', 'react'],
-                        },
-                    }, {
-                        test: /\.json$/,
-                        loader: 'json-loader',
-                    }, ],
-                },
-                resolve: {
-                    root: path.resolve('./src'),
-                },
-                output: {
-                    filename: 'app.js',
-                    path: '/',
-                },
-            }))
+            .pipe(gulpWebpack(
+              webpackConfig
+
+            //   {
+            //     context: __dirname,
+            //     entry: "../src/app.js",
+            //     output: {
+            //         filename: "app.js"
+            //     },
+            //     module: {
+            //         loaders: [{
+            //             test: /\.jsx?$/,
+            //             exclude: /(node_modules|bower_components)/,
+            //             loader: 'babel',
+            //             query: {
+            //                 presets: ['react', 'es2015']
+            //             }
+            //         }]
+            //     }
+            // }
+          ))
             .pipe(gulp.dest(project.dest.scripts));
 
     });
-
 
     gulp.task('client:watch', (cb) => {
 

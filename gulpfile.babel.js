@@ -8,10 +8,10 @@ const project = {
   src: {
     root: 'src/',
     clean: 'public/**/*',
-    client: 'index.js',
+    client: 'static/app.js',
     server: 'src/server/server.js',
     static: 'src/client/html/**/*.html',
-    styles: 'css/*.scss',
+    styles: 'src/scss/*.scss',
     images: 'src/client/img/**/*',
     fonts: 'src/client/fonts/**/*',
     vscripts: 'src/client/js/**/*.js',
@@ -21,10 +21,10 @@ const project = {
   },
   dest: {
     static: 'public/',
-    styles: '../css/',
+    styles: 'static/css/',
     images: 'public/img/',
     fonts: 'public/fonts/',
-    scripts: '../js/',
+    scripts: 'static/js/',
     variables: 'src/components/config/',
     dist: 'dist',
     config: 'dist/components/config/'
