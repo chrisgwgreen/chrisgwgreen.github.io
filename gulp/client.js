@@ -4,54 +4,36 @@ import path from 'path';
 import gulpWebpack from 'webpack-stream';
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config.js';
+import uglify from 'gulp-uglify';
 
 module.exports = (project) => {
 
-    gulp.task('client', () => {
+  gulp.task('client', () => {
 
-        gutil.log('----------------------------------------');
-        gutil.log('Babel Build Client...');
-        gutil.log('----------------------------------------');
+    gutil.log('---------------------Babel Build Client---------------------');
 
-        gulp.src(project.src.client)
-            .pipe(gulpWebpack(
-              webpackConfig
+    gulp.src(project.src.client)
+      .pipe(gulpWebpack(
+        Object.assign(webpackConfig, {
+          output: {
+            filename: "app.js"
+          }
+        })
+      ))
+      .pipe(uglify())
+      .pipe(gulp.dest(project.dest.scripts));
+  });
 
-            //   {
-            //     context: __dirname,
-            //     entry: "../src/app.js",
-            //     output: {
-            //         filename: "app.js"
-            //     },
-            //     module: {
-            //         loaders: [{
-            //             test: /\.jsx?$/,
-            //             exclude: /(node_modules|bower_components)/,
-            //             loader: 'babel',
-            //             query: {
-            //                 presets: ['react', 'es2015']
-            //             }
-            //         }]
-            //     }
-            // }
-          ))
-            .pipe(gulp.dest(project.dest.scripts));
+  gulp.task('client:watch', (cb) => {
 
+    gutil.log('---------------------Watching client---------------------');
+
+    gulp.watch('/components', () => {
+      runSequence(
+        'client'
+      );
     });
 
-    gulp.task('client:watch', (cb) => {
-
-        gutil.log('----------------------------------------');
-        gutil.log('Watching client...');
-        gutil.log('----------------------------------------');
-
-        gulp.watch('/components', () => {
-            runSequence(
-                'client'
-            );
-        });
-
-    });
-
+  });
 
 };
